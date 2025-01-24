@@ -12,7 +12,7 @@ https://docs.google.com/spreadsheets/d/1e3UHTczADp20aTlmeOdv1TCw_J5Vt0FnRzHBGLIg
 ### Sources for additional data - https://gml.noaa.gov/ccgg/trends/graph.html
 All data is in situ samples from Mauna Loa and/or the suitable coordinates
 
-- Sulfur hexafluoride (SF6) data from hourly in situ samples analyzed on a gas chromatograph located at Mauna Loa (MLO), Hawaii (19.539 N, 155.578 W, elevation: 3397m https://gml.noaa.gov/aftp/data/hats/sf6/insituGCs/CATS/daily/mlo_SF6_Day.dat
+- Sulfur hexafluoride (SF6) data from hourly in situ samples analyzed on a gas chromatograph located at Mauna Loa (MLO), Hawaii (19.539 N, 155.578 W, elevation: 3397m) https://gml.noaa.gov/aftp/data/hats/sf6/insituGCs/CATS/daily/mlo_SF6_Day.dat
 
 - Atmospheric Methane (CH4) Dry Air Mole Fractions from quasi-continuous measurements at Mauna Loa, Hawaii https://gml.noaa.gov/aftp/data/trace_gases/ch4/in-situ/surface/txt/ch4_mlo_surface-insitu_1_ccgg_DailyData.txt
 
@@ -26,7 +26,7 @@ All data is in situ samples from Mauna Loa and/or the suitable coordinates
 - stationarity, ACF and PACF tests
 
 ## Models
-### Model 1 - Only original data is used
-### Model 2 - Short-Medium term model - predicting 1 month ahead (multiple features)
-### Model 3 - Medium-Long term model - predicting up to 5 years ahead (multiple features)
-### Model 4 - Long term model - predicting 10+ years ahead (multiple features)
+### Model 1 - Only original data is used - predicting 10 years ahead - Gaussian Processes 
+### Model 2 - Short-Medium term model - predicting 1 month ahead (multiple features) - SarimaX
+### Model 3 - Medium-Long term model - predicting up to 5 years ahead (multiple features) - Prophet
+### Model 4 - Long term model - predicting 40+ years ahead (multiple features) - Gaussian Processes 
