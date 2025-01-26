@@ -132,6 +132,33 @@ def plot_lagged_correlations(df, target_column, max_lag_days, significance_thres
     plt.show()
 
 
+def plot_increase_decades(df):
+    '''function for plotting the increase of levels through the decades'''
+    df_viz = df.reset_index()  # Reset the index if needed
+    df_viz.rename(columns={'index': 'datetime'}, inplace=True)
+
+    df_viz['datetime'] = pd.to_datetime(df_viz['datetime'], errors='coerce')
+    df_viz['decade'] = (df_viz['datetime'].dt.year // 10) * 10
+
+    # Group by decade and calculate the mean CO2 levels for each decade
+    decade_avg_CO2 = df_viz.groupby('decade')['average_CO2'].mean().reset_index()
+
+    plt.figure(figsize=(16, 6))
+    colors = ['#A8D5BA', '#C1E0C5', '#DDE8B9', '#F4D9A6', '#F8B88B', '#F29A8E']
+    bars = plt.bar(decade_avg_CO2['decade'], decade_avg_CO2['average_CO2'], color=colors, width=8, edgecolor='black')
+
+    plt.title('Layered Level Chart of CO₂ Levels by Decade', fontsize=16)
+    plt.xlabel('Year', fontsize=12)
+    plt.ylabel('CO₂ Levels (ppm)', fontsize=12)
+    plt.xticks(decade_avg_CO2['decade'], labels=[f"{int(year)}s" for year in decade_avg_CO2['decade']])
+    plt.grid(axis='y', linestyle='--', alpha=0.7)
+
+    legend_labels = [f"{int(year)}s" for year in decade_avg_CO2['decade']]
+    plt.legend(bars, legend_labels, title='Decades', loc='lower right')
+
+    plt.tight_layout()
+    plt.show()
+
 
 
 
