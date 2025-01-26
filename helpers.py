@@ -160,5 +160,42 @@ def plot_increase_decades(df):
     plt.show()
 
 
+def plot_entire_df(df):
+    '''Plot chosen columns from a dataframe over time'''
+
+    columns_to_plot = ['temperature', 'humidity', 'dew_point', 'precipitation', 'pressure',
+                    'evapotranspiration', 'wind_speed', 'soil_temperature', 'average_CO2',
+                    'median_N2O', 'value_CH4', 'median_SF6']
+
+    plt.figure(figsize=(17, 26))
+
+    for i, col in enumerate(columns_to_plot, 1):
+        plt.subplot(13, 1, i)
+        plt.plot(df.index, df[col], label=col, color='b')  # Plot each column
+        plt.xlabel("Datetime")
+        plt.ylabel("levels")
+        plt.title(f"{col} Over Time")
+        plt.legend()
+        plt.grid(True)
+
+    plt.tight_layout()  # Adjust layout to prevent overlapping
+    plt.show()
 
 
+def plot_feature_importances(features, importances_list, model_titles, feature_colors, layout=(2, 2), figsize=(12, 10)):
+    """Plots feature importance for multiple models in a grid layout with consistent colors for features."""
+    
+    fig, axes = plt.subplots(layout[0], layout[1], figsize=figsize)
+
+    for i, ax in enumerate(axes.ravel()):
+        y_pos = np.arange(len(features))
+        colors = [feature_colors[feature] for feature in features]
+        ax.barh(y_pos, importances_list[i], align="center", alpha=0.7, color=colors)
+        ax.set_yticks(y_pos)
+        ax.set_yticklabels(features)
+        ax.set_xlabel("Importance (%)")
+        ax.set_title(model_titles[i])
+        ax.grid(axis="x", linestyle="--", alpha=0.7)
+
+    plt.tight_layout()
+    plt.show()
