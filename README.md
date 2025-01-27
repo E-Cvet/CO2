@@ -27,6 +27,6 @@ All data is in situ samples from Mauna Loa and/or the suitable coordinates
 
 ## Models
 ### Model 1 - Only original data is used - predicting 10 years ahead - Gaussian Processes 
-### Model 2 - Short-Medium term model - predicting 1 month ahead (multiple features) - SarimaX
+### Model 2 - Short-Medium term model - predicting 1 month ahead - SarimaX
 ### Model 3 - Medium-Long term model - predicting up to 5 years ahead (multiple features) - Prophet
 ### Model 4 - Long term model - predicting 40+ years ahead (multiple features) - Gaussian Processes 
