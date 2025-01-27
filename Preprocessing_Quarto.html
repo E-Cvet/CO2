@@ -9,7 +9,7 @@
 <meta name="author" content="Ekaterina Cvetkova">
 <meta name="dcterms.date" content="2025-01-27">
 
-<title>Preprocessing</title>
+<title>Data preprocessing</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -84,18 +84,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul class="collapse">
-  <li><a href="#data-preprocessing" id="toc-data-preprocessing" class="nav-link active" data-scroll-target="#data-preprocessing"><span class="header-section-number">1</span> <strong>Data Preprocessing</strong></a></li>
-  <li><a href="#importing-libraries" id="toc-importing-libraries" class="nav-link" data-scroll-target="#importing-libraries"><span class="header-section-number">2</span> Importing libraries</a></li>
-  <li><a href="#importation-checks-and-formatting-of-station-data" id="toc-importation-checks-and-formatting-of-station-data" class="nav-link" data-scroll-target="#importation-checks-and-formatting-of-station-data"><span class="header-section-number">3</span> Importation, checks and formatting of station data</a></li>
-  <li><a href="#importation-preprocessing-and-evaluation-of-feature-importance-from-open-meteo-weather-data" id="toc-importation-preprocessing-and-evaluation-of-feature-importance-from-open-meteo-weather-data" class="nav-link" data-scroll-target="#importation-preprocessing-and-evaluation-of-feature-importance-from-open-meteo-weather-data"><span class="header-section-number">4</span> Importation, preprocessing and evaluation of feature importance from Open Meteo weather data</a>
+  <li><a href="#importing-libraries" id="toc-importing-libraries" class="nav-link active" data-scroll-target="#importing-libraries"><span class="header-section-number">1</span> Importing libraries</a></li>
+  <li><a href="#importation-checks-and-formatting-of-station-data" id="toc-importation-checks-and-formatting-of-station-data" class="nav-link" data-scroll-target="#importation-checks-and-formatting-of-station-data"><span class="header-section-number">2</span> Importation, checks and formatting of station data</a></li>
+  <li><a href="#importation-preprocessing-and-evaluation-of-feature-importance-from-open-meteo-weather-data" id="toc-importation-preprocessing-and-evaluation-of-feature-importance-from-open-meteo-weather-data" class="nav-link" data-scroll-target="#importation-preprocessing-and-evaluation-of-feature-importance-from-open-meteo-weather-data"><span class="header-section-number">3</span> Importation, preprocessing and evaluation of feature importance from Open Meteo weather data</a>
   <ul class="collapse">
-  <li><a href="#evaluating-correlations-between-weather-data-and-co2-levels-from-station-data" id="toc-evaluating-correlations-between-weather-data-and-co2-levels-from-station-data" class="nav-link" data-scroll-target="#evaluating-correlations-between-weather-data-and-co2-levels-from-station-data"><span class="header-section-number">4.1</span> Evaluating correlations between weather data and CO2 levels from station data</a></li>
+  <li><a href="#evaluating-correlations-between-weather-data-and-co2-levels-from-station-data" id="toc-evaluating-correlations-between-weather-data-and-co2-levels-from-station-data" class="nav-link" data-scroll-target="#evaluating-correlations-between-weather-data-and-co2-levels-from-station-data"><span class="header-section-number">3.1</span> Evaluating correlations between weather data and CO2 levels from station data</a></li>
   </ul></li>
-  <li><a href="#n2o-importation-and-analysis" id="toc-n2o-importation-and-analysis" class="nav-link" data-scroll-target="#n2o-importation-and-analysis"><span class="header-section-number">5</span> N2O Importation and analysis</a></li>
-  <li><a href="#methane-importation-and-analysis" id="toc-methane-importation-and-analysis" class="nav-link" data-scroll-target="#methane-importation-and-analysis"><span class="header-section-number">6</span> Methane importation and analysis</a></li>
-  <li><a href="#sf6-importation-and-checks" id="toc-sf6-importation-and-checks" class="nav-link" data-scroll-target="#sf6-importation-and-checks"><span class="header-section-number">7</span> SF6 importation and checks</a></li>
-  <li><a href="#merging-and-visualising-all-data" id="toc-merging-and-visualising-all-data" class="nav-link" data-scroll-target="#merging-and-visualising-all-data"><span class="header-section-number">8</span> Merging and visualising all data</a></li>
-  <li><a href="#visualising-correlations" id="toc-visualising-correlations" class="nav-link" data-scroll-target="#visualising-correlations"><span class="header-section-number">9</span> Visualising Correlations</a></li>
+  <li><a href="#n2o-importation-and-analysis" id="toc-n2o-importation-and-analysis" class="nav-link" data-scroll-target="#n2o-importation-and-analysis"><span class="header-section-number">4</span> N2O Importation and analysis</a></li>
+  <li><a href="#methane-importation-and-analysis" id="toc-methane-importation-and-analysis" class="nav-link" data-scroll-target="#methane-importation-and-analysis"><span class="header-section-number">5</span> Methane importation and analysis</a></li>
+  <li><a href="#sf6-importation-and-checks" id="toc-sf6-importation-and-checks" class="nav-link" data-scroll-target="#sf6-importation-and-checks"><span class="header-section-number">6</span> SF6 importation and checks</a></li>
+  <li><a href="#merging-and-visualising-all-data" id="toc-merging-and-visualising-all-data" class="nav-link" data-scroll-target="#merging-and-visualising-all-data"><span class="header-section-number">7</span> Merging and visualising all data</a></li>
+  <li><a href="#visualising-correlations" id="toc-visualising-correlations" class="nav-link" data-scroll-target="#visualising-correlations"><span class="header-section-number">8</span> Visualising Correlations</a></li>
   </ul>
 </nav>
 </div>
@@ -103,7 +102,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Preprocessing</h1>
+<h1 class="title">Data preprocessing</h1>
 </div>
 
 
@@ -120,7 +119,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2025-01-27</p>
+      <p class="date">January 27, 2025</p>
     </div>
   </div>
   
@@ -133,12 +132,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>The quantity of CO2 is determined and described by the chemical term “mole fraction”, defined as the number of carbon dioxide molecules in a given number of molecules of air, after removal of water vapor. For example, 413 parts per million of CO2 (abbreviated as ppm) means that in every million molecules of (dry) air there are on average 413 CO2 molecules.</p>
-<section id="data-preprocessing" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> <strong>Data Preprocessing</strong></h1>
-</section>
-<section id="importing-libraries" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Importing libraries</h1>
-<div id="cell-4" class="cell" data-execution_count="1">
+<section id="importing-libraries" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Importing libraries</h1>
+<div id="cell-3" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -155,9 +151,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 </div>
 </section>
-<section id="importation-checks-and-formatting-of-station-data" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Importation, checks and formatting of station data</h1>
-<div id="cell-6" class="cell" data-execution_count="2">
+<section id="importation-checks-and-formatting-of-station-data" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Importation, checks and formatting of station data</h1>
+<div id="cell-5" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df_station <span class="op">=</span> pd.read_csv(<span class="st">'data_project - Sheet1.csv'</span>)</span>
@@ -322,7 +318,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-7" class="cell" data-execution_count="3">
+<div id="cell-6" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>invalid_10years <span class="op">=</span> (df_station[<span class="st">'10 years ago'</span>] <span class="op">==</span> <span class="op">-</span><span class="fl">999.99</span>).<span class="bu">sum</span>()</span>
@@ -334,7 +330,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>We can use the information from the other columns to create a valid datetime format.</p>
 <p>The ‘decimal’ column along with the ‘day’ and ‘month’ columns can be used to adjust the datetime index accordingly</p>
-<div id="cell-9" class="cell" data-execution_count="4">
+<div id="cell-8" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df_station[<span class="st">'year'</span>] <span class="op">=</span> df_station[<span class="st">'year'</span>].astype(<span class="bu">str</span>).<span class="bu">str</span>.strip()</span>
@@ -342,14 +338,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>df_station.loc[mask, <span class="st">'year'</span>] <span class="op">=</span> df_station.loc[mask, <span class="st">'decimal'</span>].fillna(<span class="dv">0</span>).<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="bu">int</span>(<span class="bu">float</span>(x)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-10" class="cell" data-outputid="869eca54-5533-4d63-c786-06662ebdd716" data-execution_count="5">
+<div id="cell-9" class="cell" data-outputid="869eca54-5533-4d63-c786-06662ebdd716" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df_station.drop(columns <span class="op">=</span> [<span class="st">'decimal'</span>], inplace <span class="op">=</span> <span class="va">True</span>)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>df_station <span class="op">=</span> coerce_into_full_datetime(df_station)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-11" class="cell" data-outputid="89de9c95-1858-4042-d834-6ed3a2c6117f" data-execution_count="6">
+<div id="cell-10" class="cell" data-outputid="89de9c95-1858-4042-d834-6ed3a2c6117f" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>invalid_average <span class="op">=</span> (df_station[<span class="st">'average'</span>] <span class="op">==</span> <span class="op">-</span><span class="fl">999.99</span>).<span class="bu">sum</span>()</span>
@@ -367,7 +363,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>We are using the data from the ‘<code>1 year ago</code>’ and ‘<code>10 years ago</code>’ columns to include and adjust missing datetimes, thus giving us a richer dataframe which would allow us to capture the trend effectively.</p>
-<div id="cell-13" class="cell" data-outputid="5fc37b40-ee25-44aa-cc56-30c0350bb0a5" data-execution_count="7">
+<div id="cell-12" class="cell" data-outputid="5fc37b40-ee25-44aa-cc56-30c0350bb0a5" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df_station <span class="op">=</span> add_missing_dates(df_station) <span class="co"># using the function to create new rows using the '10 year ago' column</span></span>
@@ -375,326 +371,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>df_station.drop(df_station[df_station[<span class="st">'average'</span>] <span class="op">==</span> <span class="op">-</span><span class="fl">999.99</span>].index, inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-14" class="cell" data-outputid="613aea5c-5a07-4a12-c18d-7d13b01a14c0" data-execution_count="8">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df_station</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display" data-execution_count="8">
-<div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">average</th>
-<th data-quarto-table-cell-role="th">ndays</th>
-<th data-quarto-table-cell-role="th">1 year ago</th>
-<th data-quarto-table-cell-role="th">10 years ago</th>
-<th data-quarto-table-cell-role="th">increase since 1800</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">1974-05-19</td>
-<td>333.37</td>
-<td>5.0</td>
-<td>-999.99</td>
-<td>NaN</td>
-<td>50.40</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1974-05-25</td>
-<td>332.95</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">1974-05-26</td>
-<td>332.95</td>
-<td>6.0</td>
-<td>-999.99</td>
-<td>NaN</td>
-<td>50.06</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1974-06-01</td>
-<td>332.44</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">1974-06-02</td>
-<td>332.35</td>
-<td>5.0</td>
-<td>-999.99</td>
-<td>NaN</td>
-<td>49.60</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2024-09-15</td>
-<td>421.98</td>
-<td>7.0</td>
-<td>418.33</td>
-<td>395.24</td>
-<td>145.49</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">2024-09-22</td>
-<td>421.71</td>
-<td>2.0</td>
-<td>418.28</td>
-<td>395.47</td>
-<td>145.32</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2024-09-29</td>
-<td>421.95</td>
-<td>4.0</td>
-<td>418.35</td>
-<td>395.61</td>
-<td>145.56</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">2024-10-06</td>
-<td>422.16</td>
-<td>4.0</td>
-<td>418.47</td>
-<td>395.73</td>
-<td>145.68</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2024-10-13</td>
-<td>422.62</td>
-<td>5.0</td>
-<td>419.56</td>
-<td>395.86</td>
-<td>145.97</td>
-</tr>
-</tbody>
-</table>
-
-<p>5174 rows × 5 columns</p>
-</div>
-</div>
-</div>
 </section>
-<section id="importation-preprocessing-and-evaluation-of-feature-importance-from-open-meteo-weather-data" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Importation, preprocessing and evaluation of feature importance from Open Meteo weather data</h1>
-<div id="cell-16" class="cell" data-execution_count="9">
+<section id="importation-preprocessing-and-evaluation-of-feature-importance-from-open-meteo-weather-data" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Importation, preprocessing and evaluation of feature importance from Open Meteo weather data</h1>
+<div id="cell-14" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df_history <span class="op">=</span> pd.read_csv(<span class="vs">r'open-meteo-19.44N155.62E0m - Sheet1.csv'</span>, skiprows<span class="op">=</span><span class="dv">3</span>)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>df_history.index <span class="op">=</span> pd.to_datetime(df_history.index).strftime(<span class="st">'%Y-%m-</span><span class="sc">%d</span><span class="st"> %H:%M:%S'</span>)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>df_history.reset_index(inplace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>df_history.set_index(<span class="st">'time'</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>df_history.drop(columns <span class="op">=</span> <span class="st">'index'</span>, inplace <span class="op">=</span> <span class="va">True</span>)</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>df_history.index <span class="op">=</span> pd.to_datetime(df_history.index)</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>df_history <span class="op">=</span> df_history.resample(<span class="st">'D'</span>).mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df_history <span class="op">=</span> pd.read_csv(<span class="vs">r'open-meteo-19.44N155.62E0m - Sheet1.csv'</span>, skiprows<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>df_history.index <span class="op">=</span> pd.to_datetime(df_history.index).strftime(<span class="st">'%Y-%m-</span><span class="sc">%d</span><span class="st"> %H:%M:%S'</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>df_history.reset_index(inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>df_history.set_index(<span class="st">'time'</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>df_history.drop(columns <span class="op">=</span> <span class="st">'index'</span>, inplace <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>df_history.index <span class="op">=</span> pd.to_datetime(df_history.index)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>df_history <span class="op">=</span> df_history.resample(<span class="st">'D'</span>).mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-17" class="cell" data-outputid="0a898051-fe59-4716-83b7-e1dc2986efeb" data-execution_count="10">
+<div id="cell-15" class="cell" data-execution_count="11">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating df on dates when station data and Open Meteo data overlap</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>common_dates <span class="op">=</span> df_history.index.intersection(df_station.index)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>df_history <span class="op">=</span> df_history.loc[common_dates]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="cell-16" class="cell" data-outputid="d7c9983f-e61f-4263-b8ff-1070fc623b02" data-execution_count="12">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df_history</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display" data-execution_count="10">
-<div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">temperature_2m (°C)</th>
-<th data-quarto-table-cell-role="th">relative_humidity_2m (%)</th>
-<th data-quarto-table-cell-role="th">dew_point_2m (°C)</th>
-<th data-quarto-table-cell-role="th">precipitation (mm)</th>
-<th data-quarto-table-cell-role="th">pressure_msl (hPa)</th>
-<th data-quarto-table-cell-role="th">surface_pressure (hPa)</th>
-<th data-quarto-table-cell-role="th">et0_fao_evapotranspiration (mm)</th>
-<th data-quarto-table-cell-role="th">wind_speed_10m (m/s)</th>
-<th data-quarto-table-cell-role="th">soil_temperature_0_to_7cm (°C)</th>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th">time</th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">1974-05-01</td>
-<td>26.391667</td>
-<td>78.666667</td>
-<td>22.375000</td>
-<td>0.000000</td>
-<td>1013.758333</td>
-<td>1013.758333</td>
-<td>0.227917</td>
-<td>9.143333</td>
-<td>26.700000</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1974-05-02</td>
-<td>26.612500</td>
-<td>78.500000</td>
-<td>22.570833</td>
-<td>0.000000</td>
-<td>1014.570833</td>
-<td>1014.570833</td>
-<td>0.227500</td>
-<td>7.852083</td>
-<td>26.933333</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">1974-05-03</td>
-<td>26.275000</td>
-<td>78.625000</td>
-<td>22.258333</td>
-<td>0.020833</td>
-<td>1014.241667</td>
-<td>1014.241667</td>
-<td>0.226250</td>
-<td>6.119583</td>
-<td>27.066667</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1974-05-04</td>
-<td>26.266667</td>
-<td>82.041667</td>
-<td>22.929167</td>
-<td>0.041667</td>
-<td>1013.062500</td>
-<td>1013.062500</td>
-<td>0.197500</td>
-<td>6.208750</td>
-<td>27.300000</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">1974-05-05</td>
-<td>26.454167</td>
-<td>84.375000</td>
-<td>23.629167</td>
-<td>0.050000</td>
-<td>1014.145833</td>
-<td>1014.145833</td>
-<td>0.197500</td>
-<td>7.193750</td>
-<td>27.466667</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2024-10-28</td>
-<td>27.741667</td>
-<td>61.583333</td>
-<td>19.679167</td>
-<td>0.004167</td>
-<td>1012.966667</td>
-<td>1012.966667</td>
-<td>0.241250</td>
-<td>4.770417</td>
-<td>29.033333</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">2024-10-29</td>
-<td>27.779167</td>
-<td>70.541667</td>
-<td>21.950000</td>
-<td>0.016667</td>
-<td>1014.754167</td>
-<td>1014.754167</td>
-<td>0.220417</td>
-<td>6.972917</td>
-<td>28.941667</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2024-10-30</td>
-<td>27.866667</td>
-<td>72.625000</td>
-<td>22.500000</td>
-<td>0.058333</td>
-<td>1014.120833</td>
-<td>1014.120833</td>
-<td>0.217917</td>
-<td>9.532917</td>
-<td>28.900000</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">2024-10-31</td>
-<td>27.900000</td>
-<td>77.000000</td>
-<td>23.495833</td>
-<td>0.050000</td>
-<td>1013.391667</td>
-<td>1013.391667</td>
-<td>0.193750</td>
-<td>7.647083</td>
-<td>28.858333</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2024-11-01</td>
-<td>27.837500</td>
-<td>77.458333</td>
-<td>23.508333</td>
-<td>0.020833</td>
-<td>1014.066667</td>
-<td>1014.066667</td>
-<td>0.201667</td>
-<td>8.111667</td>
-<td>28.820833</td>
-</tr>
-</tbody>
-</table>
-
-<p>18448 rows × 9 columns</p>
-</div>
-</div>
-</div>
-<div id="cell-18" class="cell" data-execution_count="11">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating df on dates when station data and Open Meteo data overlap</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>common_dates <span class="op">=</span> df_history.index.intersection(df_station.index)</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>df_history <span class="op">=</span> df_history.loc[common_dates]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div id="cell-19" class="cell" data-outputid="d7c9983f-e61f-4263-b8ff-1070fc623b02" data-execution_count="12">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df_history</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <div>
@@ -855,205 +559,77 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-20" class="cell" data-execution_count="13">
+<div id="cell-17" class="cell" data-execution_count="13">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>df_station_column <span class="op">=</span> df_station[[<span class="st">'average'</span>]]</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>df_CO2_meteo <span class="op">=</span> df_history.join(df_station_column, how<span class="op">=</span><span class="st">'inner'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>df_station_column <span class="op">=</span> df_station[[<span class="st">'average'</span>]]</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>df_CO2_meteo <span class="op">=</span> df_history.join(df_station_column, how<span class="op">=</span><span class="st">'inner'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<section id="evaluating-correlations-between-weather-data-and-co2-levels-from-station-data" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="evaluating-correlations-between-weather-data-and-co2-levels-from-station-data"><span class="header-section-number">4.1</span> Evaluating correlations between weather data and CO2 levels from station data</h2>
-<div id="cell-22" class="cell" data-outputid="3c735680-4163-4a74-d978-5992423d250d" data-execution_count="14">
+<section id="evaluating-correlations-between-weather-data-and-co2-levels-from-station-data" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="evaluating-correlations-between-weather-data-and-co2-levels-from-station-data"><span class="header-section-number">3.1</span> Evaluating correlations between weather data and CO2 levels from station data</h2>
+<div id="cell-19" class="cell" data-outputid="3c735680-4163-4a74-d978-5992423d250d" data-execution_count="14">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Computing Kendall's Tau correlation matrix</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>kendall_corr <span class="op">=</span> df_CO2_meteo.corr(method<span class="op">=</span><span class="st">'kendall'</span>)</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>))</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>sns.heatmap(kendall_corr, annot<span class="op">=</span><span class="va">True</span>, cmap<span class="op">=</span><span class="st">'coolwarm'</span>, fmt<span class="op">=</span><span class="st">".2f"</span>)</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>div_palette <span class="op">=</span> sns.color_palette(<span class="st">"RdBu"</span>, <span class="dv">12</span>)</span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>plt.rcParams.update({<span class="st">'font.size'</span>: <span class="dv">13</span>})</span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Kendall Correlation Heatmap"</span>)</span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Computing Kendall's Tau correlation matrix</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>kendall_corr <span class="op">=</span> df_CO2_meteo.corr(method<span class="op">=</span><span class="st">'kendall'</span>)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>))</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>sns.heatmap(kendall_corr, annot<span class="op">=</span><span class="va">True</span>, cmap<span class="op">=</span><span class="st">'coolwarm'</span>, fmt<span class="op">=</span><span class="st">".2f"</span>)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>div_palette <span class="op">=</span> sns.color_palette(<span class="st">"RdBu"</span>, <span class="dv">12</span>)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>plt.rcParams.update({<span class="st">'font.size'</span>: <span class="dv">13</span>})</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Kendall Correlation Heatmap"</span>)</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Preprocessing_Quarto_files/figure-html/cell-15-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="Preprocessing_Quarto_files/figure-html/cell-13-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Surprisingly and unfortunately, there seems to be little to no correlation between the weather data and the average levels of CO2 at this particular location.</p>
 <p>However further testing and assessment is needed before drawing final conclusions.</p>
-<div id="cell-24" class="cell" data-outputid="2db2351b-cf26-46bd-cbb6-39c636e0294c" data-execution_count="15">
+<div id="cell-21" class="cell" data-outputid="2db2351b-cf26-46bd-cbb6-39c636e0294c" data-execution_count="15">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>df_CO2_meteo.drop([<span class="st">'surface_pressure (hPa)'</span>],axis<span class="op">=</span><span class="dv">1</span>,inplace <span class="op">=</span> <span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>df_CO2_meteo.drop([<span class="st">'surface_pressure (hPa)'</span>],axis<span class="op">=</span><span class="dv">1</span>,inplace <span class="op">=</span> <span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-25" class="cell" data-execution_count="16">
+<div id="cell-22" class="cell" data-execution_count="16">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>df_CO2_meteo.rename(columns<span class="op">=</span>{<span class="st">'average'</span>: <span class="st">'average_CO2'</span>, <span class="st">'temperature_2m (°C)'</span> : <span class="st">'temperature'</span>, </span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>                             <span class="st">'relative_humidity_2m (%)'</span>:<span class="st">'humidity'</span>, <span class="st">'dew_point_2m (°C)'</span> : <span class="st">'dew_point'</span>,</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>                             <span class="st">'precipitation (mm)'</span> : <span class="st">'precipitation'</span>, <span class="st">'pressure_msl (hPa)'</span> : <span class="st">'pressure'</span>,</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>                             <span class="st">'et0_fao_evapotranspiration (mm)'</span> : <span class="st">'evapotranspiration'</span>, </span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>                             <span class="st">'wind_speed_10m (m/s)'</span> : <span class="st">'wind_speed'</span>, <span class="st">'soil_temperature_0_to_7cm (°C)'</span> : <span class="st">'soil_temperature'</span>}, inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>df_CO2_meteo.rename(columns<span class="op">=</span>{<span class="st">'average'</span>: <span class="st">'average_CO2'</span>, <span class="st">'temperature_2m (°C)'</span> : <span class="st">'temperature'</span>, </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>                             <span class="st">'relative_humidity_2m (%)'</span>:<span class="st">'humidity'</span>, <span class="st">'dew_point_2m (°C)'</span> : <span class="st">'dew_point'</span>,</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>                             <span class="st">'precipitation (mm)'</span> : <span class="st">'precipitation'</span>, <span class="st">'pressure_msl (hPa)'</span> : <span class="st">'pressure'</span>,</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>                             <span class="st">'et0_fao_evapotranspiration (mm)'</span> : <span class="st">'evapotranspiration'</span>, </span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>                             <span class="st">'wind_speed_10m (m/s)'</span> : <span class="st">'wind_speed'</span>, <span class="st">'soil_temperature_0_to_7cm (°C)'</span> : <span class="st">'soil_temperature'</span>}, inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-26" class="cell" data-execution_count="17">
+<div id="cell-23" class="cell" data-execution_count="17">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df_CO2_meteo.to_csv(<span class="st">'df_CO2_meteo.csv'</span>, index<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>df_CO2_meteo.to_csv(<span class="st">'df_CO2_meteo.csv'</span>, index<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
 </section>
-<section id="n2o-importation-and-analysis" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> N2O Importation and analysis</h1>
-<div id="cell-28" class="cell" data-execution_count="18">
+<section id="n2o-importation-and-analysis" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> N2O Importation and analysis</h1>
+<div id="cell-25" class="cell" data-execution_count="18">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>df_N2O <span class="op">=</span> pd.read_csv(<span class="vs">r'mlo_N2O_Day.csv'</span>, skiprows <span class="op">=</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>df_N2O <span class="op">=</span> pd.read_csv(<span class="vs">r'mlo_N2O_Day.csv'</span>, skiprows <span class="op">=</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-29" class="cell" data-outputid="5b7057bc-07b5-4605-8095-b01f0f506531" data-execution_count="19">
+<div id="cell-26" class="cell" data-outputid="6ee38d4e-97e7-47d0-e45d-0759daa2e23b" data-execution_count="20">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>df_N2O</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display" data-execution_count="19">
-<div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">N2OcatsMLOyr</th>
-<th data-quarto-table-cell-role="th">N2OcatsMLOmon</th>
-<th data-quarto-table-cell-role="th">N2OcatsMLOday</th>
-<th data-quarto-table-cell-role="th">N2OcatsMLOm</th>
-<th data-quarto-table-cell-role="th">N2OcatsMLOmsd</th>
-<th data-quarto-table-cell-role="th">N2OcatsMLOn</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>1998</td>
-<td>11</td>
-<td>28</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>1998</td>
-<td>11</td>
-<td>29</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>1998</td>
-<td>11</td>
-<td>30</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>1998</td>
-<td>12</td>
-<td>1</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>1998</td>
-<td>12</td>
-<td>2</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">8760</td>
-<td>2022</td>
-<td>11</td>
-<td>23</td>
-<td>337.97</td>
-<td>1.08</td>
-<td>24</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">8761</td>
-<td>2022</td>
-<td>11</td>
-<td>24</td>
-<td>337.61</td>
-<td>0.98</td>
-<td>24</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">8762</td>
-<td>2022</td>
-<td>11</td>
-<td>25</td>
-<td>337.51</td>
-<td>1.02</td>
-<td>23</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">8763</td>
-<td>2022</td>
-<td>11</td>
-<td>26</td>
-<td>337.02</td>
-<td>0.96</td>
-<td>23</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">8764</td>
-<td>2022</td>
-<td>11</td>
-<td>27</td>
-<td>337.51</td>
-<td>0.94</td>
-<td>24</td>
-</tr>
-</tbody>
-</table>
-
-<p>8765 rows × 6 columns</p>
-</div>
-</div>
-</div>
-<div id="cell-30" class="cell" data-outputid="6ee38d4e-97e7-47d0-e45d-0759daa2e23b" data-execution_count="20">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>new_column_names <span class="op">=</span> [<span class="st">'year'</span>, <span class="st">'month'</span>, <span class="st">'day'</span>, <span class="st">'median_N2O'</span>, <span class="st">'std._dev.N2O'</span>, <span class="st">'samplesN20'</span>]</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>df_N2O.columns <span class="op">=</span> new_column_names</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>df_N2O</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>new_column_names <span class="op">=</span> [<span class="st">'year'</span>, <span class="st">'month'</span>, <span class="st">'day'</span>, <span class="st">'median_N2O'</span>, <span class="st">'std._dev.N2O'</span>, <span class="st">'samplesN20'</span>]</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>df_N2O.columns <span class="op">=</span> new_column_names</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>df_N2O</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="20">
 <div>
@@ -1178,11 +754,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-31" class="cell" data-outputid="d45e4191-cf6e-4e74-9794-058c3bb671af" data-execution_count="21">
+<div id="cell-27" class="cell" data-outputid="d45e4191-cf6e-4e74-9794-058c3bb671af" data-execution_count="21">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>df_N2O <span class="op">=</span> coerce_into_full_datetime(df_N2O) <span class="co"># using the `year`, `month` and `day` columns</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>df_N2O</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>df_N2O <span class="op">=</span> coerce_into_full_datetime(df_N2O) <span class="co"># using the `year`, `month` and `day` columns</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="21">
 <div>
@@ -1277,18 +852,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-32" class="cell" data-outputid="587bafa5-1991-4383-c678-3c69ab2b41dd" data-execution_count="22">
+<div id="cell-28" class="cell" data-outputid="587bafa5-1991-4383-c678-3c69ab2b41dd" data-execution_count="22">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>df_N2O.interpolate(method<span class="op">=</span><span class="st">'time'</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>df_N2O.fillna(method<span class="op">=</span><span class="st">'ffill'</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>df_N2O.fillna(method<span class="op">=</span><span class="st">'bfill'</span>, inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>df_N2O.interpolate(method<span class="op">=</span><span class="st">'time'</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>df_N2O.fillna(method<span class="op">=</span><span class="st">'ffill'</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>df_N2O.fillna(method<span class="op">=</span><span class="st">'bfill'</span>, inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-33" class="cell" data-outputid="33dab11a-30ea-4245-db04-72737bb8bca9" data-execution_count="23">
+<div id="cell-29" class="cell" data-outputid="33dab11a-30ea-4245-db04-72737bb8bca9" data-execution_count="23">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>df_N2O</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>df_N2O</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="23">
 <div>
@@ -1384,34 +959,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="methane-importation-and-analysis" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> Methane importation and analysis</h1>
-<div id="cell-35" class="cell" data-execution_count="24">
+<section id="methane-importation-and-analysis" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Methane importation and analysis</h1>
+<div id="cell-31" class="cell" data-execution_count="24">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>df_CH4 <span class="op">=</span> pd.read_csv(<span class="vs">r'mlo_CH4_Day.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>df_CH4 <span class="op">=</span> pd.read_csv(<span class="vs">r'mlo_CH4_Day.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-36" class="cell" data-outputid="91e57d10-7ecc-4c6b-9e1c-4f6db9c6fcbb" data-execution_count="25">
+<div id="cell-32" class="cell" data-outputid="91e57d10-7ecc-4c6b-9e1c-4f6db9c6fcbb" data-execution_count="25">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>new_column_names <span class="op">=</span> [</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"site_code"</span>, <span class="st">"year"</span>, <span class="st">"month"</span>, <span class="st">"day"</span>, <span class="st">"hour"</span>, <span class="st">"minute"</span>, <span class="st">"second"</span>,</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"datetime"</span>, <span class="st">"time_decimal"</span>, <span class="st">"midpoint_time"</span>, <span class="st">"value_CH4"</span>, <span class="st">"value_std_dev_CH4"</span>,</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"nvalue_CH4"</span>, <span class="st">"latitude"</span>, <span class="st">"longitude"</span>, <span class="st">"altitude"</span>, <span class="st">"elevation"</span>, <span class="st">"intake_height"</span>, <span class="st">"qcflag"</span></span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>df_CH4.columns <span class="op">=</span> new_column_names</span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>df_CH4.drop(</span>
-<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>    columns<span class="op">=</span>[<span class="st">"site_code"</span>, <span class="st">"year"</span>, <span class="st">"month"</span>, <span class="st">"day"</span>, <span class="st">"hour"</span>, <span class="st">"minute"</span>, <span class="st">"second"</span>, <span class="st">"time_decimal"</span>,</span>
-<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>             <span class="st">"midpoint_time"</span>, <span class="st">"latitude"</span>, <span class="st">"longitude"</span>, <span class="st">"altitude"</span>, <span class="st">"elevation"</span>, <span class="st">"intake_height"</span>, <span class="st">"qcflag"</span>],</span>
-<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>    inplace<span class="op">=</span><span class="va">True</span></span>
-<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>df_CH4[<span class="st">"datetime"</span>] <span class="op">=</span> pd.to_datetime(df_CH4[<span class="st">"datetime"</span>]).dt.date</span>
-<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>df_CH4.set_index(<span class="st">"datetime"</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>df_CH4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>new_column_names <span class="op">=</span> [</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"site_code"</span>, <span class="st">"year"</span>, <span class="st">"month"</span>, <span class="st">"day"</span>, <span class="st">"hour"</span>, <span class="st">"minute"</span>, <span class="st">"second"</span>,</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"datetime"</span>, <span class="st">"time_decimal"</span>, <span class="st">"midpoint_time"</span>, <span class="st">"value_CH4"</span>, <span class="st">"value_std_dev_CH4"</span>,</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"nvalue_CH4"</span>, <span class="st">"latitude"</span>, <span class="st">"longitude"</span>, <span class="st">"altitude"</span>, <span class="st">"elevation"</span>, <span class="st">"intake_height"</span>, <span class="st">"qcflag"</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>df_CH4.columns <span class="op">=</span> new_column_names</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>df_CH4.drop(</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>    columns<span class="op">=</span>[<span class="st">"site_code"</span>, <span class="st">"year"</span>, <span class="st">"month"</span>, <span class="st">"day"</span>, <span class="st">"hour"</span>, <span class="st">"minute"</span>, <span class="st">"second"</span>, <span class="st">"time_decimal"</span>,</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>             <span class="st">"midpoint_time"</span>, <span class="st">"latitude"</span>, <span class="st">"longitude"</span>, <span class="st">"altitude"</span>, <span class="st">"elevation"</span>, <span class="st">"intake_height"</span>, <span class="st">"qcflag"</span>],</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>    inplace<span class="op">=</span><span class="va">True</span></span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>df_CH4[<span class="st">"datetime"</span>] <span class="op">=</span> pd.to_datetime(df_CH4[<span class="st">"datetime"</span>]).dt.date</span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>df_CH4.set_index(<span class="st">"datetime"</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>df_CH4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="25">
 <div>
@@ -1506,47 +1081,47 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-37" class="cell" data-outputid="10c43187-db5d-4e4f-b611-bc84a1b3adcc" data-execution_count="26">
+<div id="cell-33" class="cell" data-outputid="10c43187-db5d-4e4f-b611-bc84a1b3adcc" data-execution_count="26">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>invalid_CH4 <span class="op">=</span> (df_CH4[<span class="st">'value_CH4'</span>] <span class="op">==</span> <span class="op">-</span><span class="fl">999.99</span>).<span class="bu">sum</span>()</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>invalid_CH4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>invalid_CH4 <span class="op">=</span> (df_CH4[<span class="st">'value_CH4'</span>] <span class="op">==</span> <span class="op">-</span><span class="fl">999.99</span>).<span class="bu">sum</span>()</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>invalid_CH4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="26">
 <pre><code>np.int64(906)</code></pre>
 </div>
 </div>
 <p>Since the invalid rows in this dataset are of a miniscule amount in comparison to the size of the whole data, completely removing them does no harm.</p>
-<div id="cell-39" class="cell" data-execution_count="27">
+<div id="cell-35" class="cell" data-execution_count="27">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>df_CH4 <span class="op">=</span> df_CH4.loc[df_CH4[<span class="st">"value_CH4"</span>] <span class="op">!=</span> <span class="op">-</span><span class="fl">999.99</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>df_CH4 <span class="op">=</span> df_CH4.loc[df_CH4[<span class="st">"value_CH4"</span>] <span class="op">!=</span> <span class="op">-</span><span class="fl">999.99</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
-<section id="sf6-importation-and-checks" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> SF6 importation and checks</h1>
-<div id="cell-41" class="cell" data-execution_count="28">
+<section id="sf6-importation-and-checks" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> SF6 importation and checks</h1>
+<div id="cell-37" class="cell" data-execution_count="28">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>df_SF6 <span class="op">=</span> pd.read_csv(<span class="vs">r'mlo_SF6_Day.csv'</span>, skiprows <span class="op">=</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>df_SF6 <span class="op">=</span> pd.read_csv(<span class="vs">r'mlo_SF6_Day.csv'</span>, skiprows <span class="op">=</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-42" class="cell" data-execution_count="29">
+<div id="cell-38" class="cell" data-execution_count="29">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>new_column_names <span class="op">=</span> [<span class="st">'year'</span>, <span class="st">'month'</span>, <span class="st">'day'</span>, <span class="st">'median_SF6'</span>, <span class="st">'std.dev_SF6'</span>, <span class="st">'samples'</span>]</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>df_SF6.columns <span class="op">=</span> new_column_names</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>new_column_names <span class="op">=</span> [<span class="st">'year'</span>, <span class="st">'month'</span>, <span class="st">'day'</span>, <span class="st">'median_SF6'</span>, <span class="st">'std.dev_SF6'</span>, <span class="st">'samples'</span>]</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>df_SF6.columns <span class="op">=</span> new_column_names</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-43" class="cell" data-outputid="0b1a0dd1-66ca-4a9e-d15c-a4a7640339f1" data-execution_count="30">
+<div id="cell-39" class="cell" data-outputid="0b1a0dd1-66ca-4a9e-d15c-a4a7640339f1" data-execution_count="30">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>df_SF6[<span class="st">'year'</span>] <span class="op">=</span> df_SF6[<span class="st">'year'</span>].astype(<span class="bu">str</span>).<span class="bu">str</span>.strip()</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>mask <span class="op">=</span> df_SF6[<span class="st">'year'</span>] <span class="op">==</span> <span class="st">'year'</span></span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>df_SF6 <span class="op">=</span> coerce_into_full_datetime(df_SF6) <span class="co"># using the `year`, `month` and `day` columns</span></span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>df_SF6</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>df_SF6[<span class="st">'year'</span>] <span class="op">=</span> df_SF6[<span class="st">'year'</span>].astype(<span class="bu">str</span>).<span class="bu">str</span>.strip()</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>mask <span class="op">=</span> df_SF6[<span class="st">'year'</span>] <span class="op">==</span> <span class="st">'year'</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>df_SF6 <span class="op">=</span> coerce_into_full_datetime(df_SF6) <span class="co"># using the `year`, `month` and `day` columns</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>df_SF6</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="30">
 <div>
@@ -1641,114 +1216,174 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-44" class="cell" data-outputid="0520543d-9a50-4863-b0ca-5268a7edc11a" data-execution_count="31">
+<div id="cell-40" class="cell" data-outputid="0520543d-9a50-4863-b0ca-5268a7edc11a" data-execution_count="31">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>df_SF6.interpolate(method<span class="op">=</span><span class="st">'time'</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>df_SF6.fillna(method<span class="op">=</span><span class="st">'ffill'</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>df_SF6.fillna(method<span class="op">=</span><span class="st">'bfill'</span>, inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>df_SF6.interpolate(method<span class="op">=</span><span class="st">'time'</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>df_SF6.fillna(method<span class="op">=</span><span class="st">'ffill'</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>df_SF6.fillna(method<span class="op">=</span><span class="st">'bfill'</span>, inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
-<section id="merging-and-visualising-all-data" class="level1" data-number="8">
-<h1 data-number="8"><span class="header-section-number">8</span> Merging and visualising all data</h1>
-<div id="cell-46" class="cell" data-execution_count="32">
+<section id="merging-and-visualising-all-data" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Merging and visualising all data</h1>
+<div id="cell-42" class="cell" data-execution_count="32">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>df_CO2_meteo.rename_axis(<span class="st">'datetime'</span>, inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>df_CO2_meteo.rename_axis(<span class="st">'datetime'</span>, inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-47" class="cell" data-execution_count="33">
+<div id="cell-43" class="cell" data-execution_count="33">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>plot_column(df_CO2_meteo, <span class="st">'average_CO2'</span>, <span class="st">'red'</span>)</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>plot_column(df_N2O, <span class="st">'median_N2O'</span>, <span class="st">'blue'</span>)</span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>plot_column(df_CH4, <span class="st">'value_CH4'</span>, <span class="st">'green'</span>)</span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>plot_column(df_SF6, <span class="st">'median_SF6'</span>, <span class="st">'magenta'</span>)</span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>plt.tight_layout</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>plot_column(df_CO2_meteo, <span class="st">'average_CO2'</span>, <span class="st">'red'</span>)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>plot_column(df_N2O, <span class="st">'median_N2O'</span>, <span class="st">'blue'</span>)</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>plot_column(df_CH4, <span class="st">'value_CH4'</span>, <span class="st">'green'</span>)</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>plot_column(df_SF6, <span class="st">'median_SF6'</span>, <span class="st">'magenta'</span>)</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>plt.tight_layout</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Preprocessing_Quarto_files/figure-html/cell-34-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="Preprocessing_Quarto_files/figure-html/cell-31-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Preprocessing_Quarto_files/figure-html/cell-34-output-2.png" class="img-fluid figure-img"></p>
+<p><img src="Preprocessing_Quarto_files/figure-html/cell-31-output-2.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Preprocessing_Quarto_files/figure-html/cell-34-output-3.png" class="img-fluid figure-img"></p>
+<p><img src="Preprocessing_Quarto_files/figure-html/cell-31-output-3.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Preprocessing_Quarto_files/figure-html/cell-34-output-4.png" class="img-fluid figure-img"></p>
+<p><img src="Preprocessing_Quarto_files/figure-html/cell-31-output-4.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-48" class="cell" data-execution_count="34">
+<div id="cell-44" class="cell" data-execution_count="34">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>dfs <span class="op">=</span> [df.copy() <span class="cf">for</span> df <span class="kw">in</span> [df_CO2_meteo, df_N2O, df_CH4, df_SF6]]</span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(dfs)):</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    dfs[i].index <span class="op">=</span> pd.to_datetime(dfs[i].index)  <span class="co"># Converting index to proper datetime64[ns]</span></span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>start_date <span class="op">=</span> df_CO2_meteo.index.<span class="bu">min</span>()  <span class="co"># Get the earliest date from df_CO2_meteo</span></span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>dfs <span class="op">=</span> [df[df.index <span class="op">&gt;=</span> start_date] <span class="cf">for</span> df <span class="kw">in</span> dfs]</span>
-<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>df_combined_outer <span class="op">=</span> pd.concat(</span>
-<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>    [dfs[<span class="dv">0</span>][[<span class="st">'temperature'</span>, <span class="st">'humidity'</span>, <span class="st">'dew_point'</span>, <span class="st">'precipitation'</span>, <span class="st">'pressure'</span>,</span>
-<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>             <span class="st">'evapotranspiration'</span>, <span class="st">'wind_speed'</span>, <span class="st">'soil_temperature'</span>, <span class="st">'average_CO2'</span>]],</span>
-<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>     dfs[<span class="dv">1</span>][[<span class="st">"median_N2O"</span>]],</span>
-<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>     dfs[<span class="dv">2</span>][[<span class="st">"value_CH4"</span>]],</span>
-<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>     dfs[<span class="dv">3</span>][[<span class="st">"median_SF6"</span>]]],</span>
-<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a>    axis<span class="op">=</span><span class="dv">1</span>, join<span class="op">=</span><span class="st">"outer"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>dfs <span class="op">=</span> [df.copy() <span class="cf">for</span> df <span class="kw">in</span> [df_CO2_meteo, df_N2O, df_CH4, df_SF6]]</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(dfs)):</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>    dfs[i].index <span class="op">=</span> pd.to_datetime(dfs[i].index)  <span class="co"># Converting index to proper datetime64[ns]</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>start_date <span class="op">=</span> df_CO2_meteo.index.<span class="bu">min</span>()  <span class="co"># Get the earliest date from df_CO2_meteo</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>dfs <span class="op">=</span> [df[df.index <span class="op">&gt;=</span> start_date] <span class="cf">for</span> df <span class="kw">in</span> dfs]</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>df_combined_outer <span class="op">=</span> pd.concat(</span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>    [dfs[<span class="dv">0</span>][[<span class="st">'temperature'</span>, <span class="st">'humidity'</span>, <span class="st">'dew_point'</span>, <span class="st">'precipitation'</span>, <span class="st">'pressure'</span>,</span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>             <span class="st">'evapotranspiration'</span>, <span class="st">'wind_speed'</span>, <span class="st">'soil_temperature'</span>, <span class="st">'average_CO2'</span>]],</span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>     dfs[<span class="dv">1</span>][[<span class="st">"median_N2O"</span>]],</span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>     dfs[<span class="dv">2</span>][[<span class="st">"value_CH4"</span>]],</span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>     dfs[<span class="dv">3</span>][[<span class="st">"median_SF6"</span>]]],</span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>    axis<span class="op">=</span><span class="dv">1</span>, join<span class="op">=</span><span class="st">"outer"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-49" class="cell" data-execution_count="35">
+<div id="cell-45" class="cell" data-execution_count="35">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>dfs <span class="op">=</span> [df.copy() <span class="cf">for</span> df <span class="kw">in</span> [df_CO2_meteo, df_N2O, df_CH4, df_SF6]]</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(dfs)):</span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    dfs[i].index <span class="op">=</span> pd.to_datetime(dfs[i].index)  <span class="co"># Converting index to proper datetime64[ns]</span></span>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>dfs <span class="op">=</span> [df.copy() <span class="cf">for</span> df <span class="kw">in</span> [df_CO2_meteo, df_N2O, df_CH4, df_SF6]]</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(dfs)):</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    dfs[i].index <span class="op">=</span> pd.to_datetime(dfs[i].index)  <span class="co"># Converting index to proper datetime64[ns]</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>start_date <span class="op">=</span> df_CO2_meteo.index.<span class="bu">min</span>()  <span class="co"># Get the earliest date from df_CO2_meteo</span></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>dfs <span class="op">=</span> [df[df.index <span class="op">&gt;=</span> start_date] <span class="cf">for</span> df <span class="kw">in</span> dfs]</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>df_combined_inner <span class="op">=</span> pd.concat(</span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>    [dfs[<span class="dv">0</span>][[<span class="st">'temperature'</span>, <span class="st">'humidity'</span>, <span class="st">'dew_point'</span>, <span class="st">'precipitation'</span>, <span class="st">'pressure'</span>,</span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>             <span class="st">'evapotranspiration'</span>, <span class="st">'wind_speed'</span>, <span class="st">'soil_temperature'</span>, <span class="st">'average_CO2'</span>]],</span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>     dfs[<span class="dv">1</span>][[<span class="st">"median_N2O"</span>]],</span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>     dfs[<span class="dv">2</span>][[<span class="st">"value_CH4"</span>]],</span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a>     dfs[<span class="dv">3</span>][[<span class="st">"median_SF6"</span>]]],</span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>    axis<span class="op">=</span><span class="dv">1</span>, join<span class="op">=</span><span class="st">"inner"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="cell-46" class="cell" data-execution_count="36">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>columns_to_fill <span class="op">=</span> [<span class="st">'temperature'</span>, <span class="st">'humidity'</span>, <span class="st">'dew_point'</span>, <span class="st">'precipitation'</span>, <span class="st">'pressure'</span>,</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'evapotranspiration'</span>, <span class="st">'wind_speed'</span>, <span class="st">'soil_temperature'</span>, <span class="st">'average_CO2'</span>]</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>df_combined_outer[columns_to_fill] <span class="op">=</span> df_combined_outer[columns_to_fill].interpolate(method<span class="op">=</span><span class="st">'time'</span>)</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>df_combined_outer[columns_to_fill] <span class="op">=</span> df_combined_outer[columns_to_fill].fillna(method<span class="op">=</span><span class="st">'ffill'</span>) <span class="co"># Forward fill remaining missing values</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>df_combined_outer[columns_to_fill] <span class="op">=</span> df_combined_outer[columns_to_fill].fillna(method<span class="op">=</span><span class="st">'bfill'</span>) <span class="co"># Backward fill remaining missing values</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="cell-47" class="cell" data-outputid="3d81bd51-d7c9-41ce-d3f4-c2707bd32932" data-execution_count="37">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>plot_entire_df(df_combined_outer)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Preprocessing_Quarto_files/figure-html/cell-35-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="visualising-correlations" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Visualising Correlations</h1>
+<div id="cell-49" class="cell" data-outputid="a6b01b40-f626-4635-e393-6bc98f8f4b1d" data-execution_count="38">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Computing Kendall's Tau correlation matrix</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>kendall_corr <span class="op">=</span> df_combined_outer.corr(method<span class="op">=</span><span class="st">'kendall'</span>)</span>
 <span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>start_date <span class="op">=</span> df_CO2_meteo.index.<span class="bu">min</span>()  <span class="co"># Get the earliest date from df_CO2_meteo</span></span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>dfs <span class="op">=</span> [df[df.index <span class="op">&gt;=</span> start_date] <span class="cf">for</span> df <span class="kw">in</span> dfs]</span>
-<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>df_combined_inner <span class="op">=</span> pd.concat(</span>
-<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>    [dfs[<span class="dv">0</span>][[<span class="st">'temperature'</span>, <span class="st">'humidity'</span>, <span class="st">'dew_point'</span>, <span class="st">'precipitation'</span>, <span class="st">'pressure'</span>,</span>
-<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>             <span class="st">'evapotranspiration'</span>, <span class="st">'wind_speed'</span>, <span class="st">'soil_temperature'</span>, <span class="st">'average_CO2'</span>]],</span>
-<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>     dfs[<span class="dv">1</span>][[<span class="st">"median_N2O"</span>]],</span>
-<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>     dfs[<span class="dv">2</span>][[<span class="st">"value_CH4"</span>]],</span>
-<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>     dfs[<span class="dv">3</span>][[<span class="st">"median_SF6"</span>]]],</span>
-<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a>    axis<span class="op">=</span><span class="dv">1</span>, join<span class="op">=</span><span class="st">"inner"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">7</span>))</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>sns.heatmap(kendall_corr, annot<span class="op">=</span><span class="va">True</span>, cmap<span class="op">=</span><span class="st">'coolwarm'</span>, fmt<span class="op">=</span><span class="st">".2f"</span>)</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Kendall Correlation Heatmap"</span>)</span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Preprocessing_Quarto_files/figure-html/cell-36-output-1.png" class="img-fluid figure-img"></p>
+</figure>
 </div>
-<div id="cell-50" class="cell" data-execution_count="36">
+</div>
+</div>
+<div id="cell-50" class="cell" data-outputid="ce3c96ff-3695-4e7a-f82d-4494ae4a6c32" data-execution_count="39">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>columns_to_fill <span class="op">=</span> [<span class="st">'temperature'</span>, <span class="st">'humidity'</span>, <span class="st">'dew_point'</span>, <span class="st">'precipitation'</span>, <span class="st">'pressure'</span>,</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>                   <span class="st">'evapotranspiration'</span>, <span class="st">'wind_speed'</span>, <span class="st">'soil_temperature'</span>, <span class="st">'average_CO2'</span>]</span>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute Pearson's Tau correlation matrix</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>pearson_corr <span class="op">=</span> df_combined_outer.corr(method<span class="op">=</span><span class="st">'pearson'</span>)</span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>df_combined_outer[columns_to_fill] <span class="op">=</span> df_combined_outer[columns_to_fill].interpolate(method<span class="op">=</span><span class="st">'time'</span>)</span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>df_combined_outer[columns_to_fill] <span class="op">=</span> df_combined_outer[columns_to_fill].fillna(method<span class="op">=</span><span class="st">'ffill'</span>) <span class="co"># Forward fill remaining missing values</span></span>
-<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>df_combined_outer[columns_to_fill] <span class="op">=</span> df_combined_outer[columns_to_fill].fillna(method<span class="op">=</span><span class="st">'bfill'</span>) <span class="co"># Backward fill remaining missing values</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">7</span>))</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>sns.heatmap(pearson_corr, annot<span class="op">=</span><span class="va">True</span>, cmap<span class="op">=</span><span class="st">'coolwarm'</span>, fmt<span class="op">=</span><span class="st">".2f"</span>)</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Pearson Correlation Heatmap"</span>)</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Preprocessing_Quarto_files/figure-html/cell-37-output-1.png" class="img-fluid figure-img"></p>
+</figure>
 </div>
-<div id="cell-51" class="cell" data-outputid="3d81bd51-d7c9-41ce-d3f4-c2707bd32932" data-execution_count="37">
+</div>
+</div>
+<p><strong>Pearson’s correlation</strong> measures the linear relationship between variables.</p>
+<p>The correlation coefficient ranges from -1 to +1, where -1 indicates a perfect negative linear relationship, +1 indicates a perfect positive linear relationship, and 0 indicates no linear relationship.</p>
+<p>However, it has a limitation: it only captures linear relationships and can miss other types of relationships between variables.</p>
+<p><strong>Kendall’s Tau</strong> takes a different approach. Instead of measuring linear relationships, it looks at the concordance between variables - essentially, whether they tend to move in the same direction. It’s measuring the tendency of the variables to increase or decrease together, without assuming anything about the shape of that relationship.</p>
+<p>In the context of environmental data like CO2 levels, temperature, and other climate variables, Kendall’s Tau might be particularly useful because environmental relationships aren’t always linear, and the data often contains outliers or follows non-normal distributions.</p>
+<div id="cell-53" class="cell" data-outputid="775e7abc-4bf2-433f-b8f2-ddd8139b1b8d" data-execution_count="40">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>plot_entire_df(df_combined_outer)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>plot_rolling_correlations(df_combined_inner)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -1757,160 +1392,100 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </div>
-</div>
-</section>
-<section id="visualising-correlations" class="level1" data-number="9">
-<h1 data-number="9"><span class="header-section-number">9</span> Visualising Correlations</h1>
-<div id="cell-53" class="cell" data-outputid="a6b01b40-f626-4635-e393-6bc98f8f4b1d" data-execution_count="38">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Computing Kendall's Tau correlation matrix</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>kendall_corr <span class="op">=</span> df_combined_outer.corr(method<span class="op">=</span><span class="st">'kendall'</span>)</span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">7</span>))</span>
-<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>sns.heatmap(kendall_corr, annot<span class="op">=</span><span class="va">True</span>, cmap<span class="op">=</span><span class="st">'coolwarm'</span>, fmt<span class="op">=</span><span class="st">".2f"</span>)</span>
-<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Kendall Correlation Heatmap"</span>)</span>
-<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Preprocessing_Quarto_files/figure-html/cell-39-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<p><strong>Pearson’s correlation</strong> measures the linear relationship between variables.</p>
-<p>The correlation coefficient ranges from -1 to +1, where -1 indicates a perfect negative linear relationship, +1 indicates a perfect positive linear relationship, and 0 indicates no linear relationship.</p>
-<p>However, it has a limitation: it only captures linear relationships and can miss other types of relationships between variables.</p>
-<div id="cell-55" class="cell" data-outputid="ce3c96ff-3695-4e7a-f82d-4494ae4a6c32" data-execution_count="39">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute Pearson's Tau correlation matrix</span></span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>pearson_corr <span class="op">=</span> df_combined_outer.corr(method<span class="op">=</span><span class="st">'pearson'</span>)</span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">7</span>))</span>
-<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>sns.heatmap(pearson_corr, annot<span class="op">=</span><span class="va">True</span>, cmap<span class="op">=</span><span class="st">'coolwarm'</span>, fmt<span class="op">=</span><span class="st">".2f"</span>)</span>
-<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Pearson Correlation Heatmap"</span>)</span>
-<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Preprocessing_Quarto_files/figure-html/cell-40-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<p><strong>Kendall’s Tau</strong> takes a different approach. Instead of measuring linear relationships, it looks at the concordance between variables - essentially, whether they tend to move in the same direction. It’s measuring the tendency of the variables to increase or decrease together, without assuming anything about the shape of that relationship.</p>
-<p>In the context of environmental data like CO2 levels, temperature, and other climate variables, Kendall’s Tau might be particularly useful because environmental relationships aren’t always linear, and the data often contains outliers or follows non-normal distributions.</p>
-<div id="cell-57" class="cell" data-outputid="775e7abc-4bf2-433f-b8f2-ddd8139b1b8d" data-execution_count="40">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>plot_rolling_correlations(df_combined_inner)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Preprocessing_Quarto_files/figure-html/cell-41-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="Preprocessing_Quarto_files/figure-html/cell-38-output-2.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Preprocessing_Quarto_files/figure-html/cell-41-output-2.png" class="img-fluid figure-img"></p>
+<p><img src="Preprocessing_Quarto_files/figure-html/cell-38-output-3.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Preprocessing_Quarto_files/figure-html/cell-41-output-3.png" class="img-fluid figure-img"></p>
+<p><img src="Preprocessing_Quarto_files/figure-html/cell-38-output-4.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Preprocessing_Quarto_files/figure-html/cell-41-output-4.png" class="img-fluid figure-img"></p>
+<p><img src="Preprocessing_Quarto_files/figure-html/cell-38-output-5.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Preprocessing_Quarto_files/figure-html/cell-41-output-5.png" class="img-fluid figure-img"></p>
+<p><img src="Preprocessing_Quarto_files/figure-html/cell-38-output-6.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Preprocessing_Quarto_files/figure-html/cell-41-output-6.png" class="img-fluid figure-img"></p>
+<p><img src="Preprocessing_Quarto_files/figure-html/cell-38-output-7.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Preprocessing_Quarto_files/figure-html/cell-41-output-7.png" class="img-fluid figure-img"></p>
+<p><img src="Preprocessing_Quarto_files/figure-html/cell-38-output-8.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Preprocessing_Quarto_files/figure-html/cell-41-output-8.png" class="img-fluid figure-img"></p>
+<p><img src="Preprocessing_Quarto_files/figure-html/cell-38-output-9.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Preprocessing_Quarto_files/figure-html/cell-41-output-9.png" class="img-fluid figure-img"></p>
+<p><img src="Preprocessing_Quarto_files/figure-html/cell-38-output-10.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Preprocessing_Quarto_files/figure-html/cell-41-output-10.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Preprocessing_Quarto_files/figure-html/cell-41-output-11.png" class="img-fluid figure-img"></p>
+<p><img src="Preprocessing_Quarto_files/figure-html/cell-38-output-11.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <p><strong>Rolling correlations</strong> (also called <em>moving correlations</em>) are a dynamic way to measure how the relationship between two variables changes over time. Unlike a single correlation coefficient that shows one number for an entire dataset, rolling correlations show how the correlation evolves throughout a time series.</p>
 <p>Rolling correlations can be used in environmental studies to understand how relationships between variables shift with seasonal or long-term changes.</p>
-<div id="cell-59" class="cell" data-outputid="2841b32b-1c23-4f28-c2ab-56f9ea7b8a93">
+<div id="cell-55" class="cell" data-outputid="2841b32b-1c23-4f28-c2ab-56f9ea7b8a93">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking for stationarity (Augmented Dickey-Fuller Test)</span></span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> check_stationarity(series, variable_name):</span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> adfuller(series.dropna())</span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>    p_value <span class="op">=</span> result[<span class="dv">1</span>]</span>
-<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> p_value</span>
-<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>stationarity_results <span class="op">=</span> {col: check_stationarity(df_combined_inner[col], col) <span class="cf">for</span> col <span class="kw">in</span> df_combined_inner.columns}</span>
-<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>max_lag <span class="op">=</span> <span class="dv">12</span></span>
-<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>granger_results <span class="op">=</span> {}</span>
-<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Performing Granger Causality tests</span></span>
-<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> df_combined_inner.columns:</span>
-<span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> col <span class="op">!=</span> <span class="st">"average_CO2"</span>:</span>
-<span id="cb44-15"><a href="#cb44-15" aria-hidden="true" tabindex="-1"></a>        test_result <span class="op">=</span> grangercausalitytests(df_combined_inner[[<span class="st">'average_CO2'</span>, col]].dropna(), max_lag, verbose<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb44-16"><a href="#cb44-16" aria-hidden="true" tabindex="-1"></a>        granger_results[col] <span class="op">=</span> {lag: test_result[lag][<span class="dv">0</span>][<span class="st">'ssr_ftest'</span>][<span class="dv">1</span>] <span class="cf">for</span> lag <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, max_lag <span class="op">+</span> <span class="dv">1</span>)}</span>
-<span id="cb44-17"><a href="#cb44-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-18"><a href="#cb44-18" aria-hidden="true" tabindex="-1"></a>stationarity_results</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Checking for stationarity (Augmented Dickey-Fuller Test)</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> check_stationarity(series, variable_name):</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> adfuller(series.dropna())</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>    p_value <span class="op">=</span> result[<span class="dv">1</span>]</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> p_value</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>stationarity_results <span class="op">=</span> {col: check_stationarity(df_combined_inner[col], col) <span class="cf">for</span> col <span class="kw">in</span> df_combined_inner.columns}</span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>max_lag <span class="op">=</span> <span class="dv">12</span></span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>granger_results <span class="op">=</span> {}</span>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Performing Granger Causality tests</span></span>
+<span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> df_combined_inner.columns:</span>
+<span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> col <span class="op">!=</span> <span class="st">"average_CO2"</span>:</span>
+<span id="cb41-15"><a href="#cb41-15" aria-hidden="true" tabindex="-1"></a>        test_result <span class="op">=</span> grangercausalitytests(df_combined_inner[[<span class="st">'average_CO2'</span>, col]].dropna(), max_lag, verbose<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb41-16"><a href="#cb41-16" aria-hidden="true" tabindex="-1"></a>        granger_results[col] <span class="op">=</span> {lag: test_result[lag][<span class="dv">0</span>][<span class="st">'ssr_ftest'</span>][<span class="dv">1</span>] <span class="cf">for</span> lag <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, max_lag <span class="op">+</span> <span class="dv">1</span>)}</span>
+<span id="cb41-17"><a href="#cb41-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-18"><a href="#cb41-18" aria-hidden="true" tabindex="-1"></a>stationarity_results</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="41">
 <pre><code>{'temperature': np.float64(9.451145188179234e-22),
@@ -1929,19 +1504,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>The <strong>ADF test</strong> checks whether a time series data is stationary, which is crucial for many statistical analyses. A stationary time series has consistent statistical properties over time - its mean and variance don’t change.</p>
 <p><strong>Granger Causality tests</strong> explore whether past values of one variable help predict future values of another. It’s testing the <em>“statistical causality”</em> - though it’s important to note that Granger causality doesn’t necessarily mean actual causation.</p>
-<div id="cell-61" class="cell" data-outputid="59421cbc-9868-4111-ed44-db262f06e71e" data-execution_count="42">
+<div id="cell-57" class="cell" data-outputid="59421cbc-9868-4111-ed44-db262f06e71e" data-execution_count="42">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Converting Granger causality test results into a readable dataFrame</span></span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>granger_df <span class="op">=</span> pd.DataFrame.from_dict(</span>
-<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>    {var: [granger_results[var][lag] <span class="cf">for</span> lag <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, max_lag <span class="op">+</span> <span class="dv">1</span>)] <span class="cf">for</span> var <span class="kw">in</span> granger_results.keys()},</span>
-<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>    orient<span class="op">=</span><span class="st">'index'</span>,</span>
-<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>    columns<span class="op">=</span>[<span class="ss">f'Lag </span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">'</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, max_lag <span class="op">+</span> <span class="dv">1</span>)]</span>
-<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>granger_df[<span class="st">"Interpretation"</span>] <span class="op">=</span> granger_df.<span class="bu">apply</span>(<span class="kw">lambda</span> row: interpret_p_value(row.values), axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a>granger_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Converting Granger causality test results into a readable dataFrame</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>granger_df <span class="op">=</span> pd.DataFrame.from_dict(</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>    {var: [granger_results[var][lag] <span class="cf">for</span> lag <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, max_lag <span class="op">+</span> <span class="dv">1</span>)] <span class="cf">for</span> var <span class="kw">in</span> granger_results.keys()},</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>    orient<span class="op">=</span><span class="st">'index'</span>,</span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>    columns<span class="op">=</span>[<span class="ss">f'Lag </span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">'</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, max_lag <span class="op">+</span> <span class="dv">1</span>)]</span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>granger_df[<span class="st">"Interpretation"</span>] <span class="op">=</span> granger_df.<span class="bu">apply</span>(<span class="kw">lambda</span> row: interpret_p_value(row.values), axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>granger_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="42">
 <div>
@@ -2172,17 +1747,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 <p>Real-World Example of Delayed Causality in Climate Data</p>
 <p>Temperature &amp; CO₂: When temperatures rise, it may take weeks to months before we see a significant change in CO₂ levels due to ocean-atmosphere exchange. Humidity &amp; CO₂: Humidity affects cloud cover, precipitation, and soil moisture, which influence carbon absorption and release but not immediately. Methane (CH₄) &amp; CO₂: CH₄ breaks down into CO₂ over time, meaning its effects on CO₂ might appear after several months.</p>
-<section id="year-in-the-past---analysis" class="level3" data-number="9.0.1">
-<h3 data-number="9.0.1" class="anchored" data-anchor-id="year-in-the-past---analysis"><span class="header-section-number">9.0.1</span> 1 year in the past - analysis</h3>
-<div id="cell-66" class="cell" data-outputid="496c4fda-5f51-4290-d3ae-e1c113172495" data-execution_count="43">
+<section id="year-in-the-past---analysis" class="level3" data-number="8.0.1">
+<h3 data-number="8.0.1" class="anchored" data-anchor-id="year-in-the-past---analysis"><span class="header-section-number">8.0.1</span> 1 year in the past - analysis</h3>
+<div id="cell-62" class="cell" data-outputid="496c4fda-5f51-4290-d3ae-e1c113172495" data-execution_count="43">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>plot_lagged_correlations(df_combined_inner, <span class="st">'average_CO2'</span>, <span class="dv">365</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>plot_lagged_correlations(df_combined_inner, <span class="st">'average_CO2'</span>, <span class="dv">365</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Preprocessing_Quarto_files/figure-html/cell-44-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="Preprocessing_Quarto_files/figure-html/cell-41-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -2205,17 +1780,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>🔬 Interpretation - Temperature and CH₄ are the strongest predictors of CO₂ over time. - The delayed effects (~90 to 360 days) explain why Pearson/Kendall correlation missed these relationships. - There is a clear seasonal component, especially for temperature and humidity. - Industrial gases (N₂O, SF₆) show long-term trends in relation to CO₂.</p>
 </section>
-<section id="year-in-the-past---analysis-1" class="level3" data-number="9.0.2">
-<h3 data-number="9.0.2" class="anchored" data-anchor-id="year-in-the-past---analysis-1"><span class="header-section-number">9.0.2</span> 5 year in the past - analysis</h3>
-<div id="cell-69" class="cell" data-outputid="e93f284e-9279-4e21-cc6c-0db9e7ca2312" data-execution_count="44">
+<section id="year-in-the-past---analysis-1" class="level3" data-number="8.0.2">
+<h3 data-number="8.0.2" class="anchored" data-anchor-id="year-in-the-past---analysis-1"><span class="header-section-number">8.0.2</span> 5 year in the past - analysis</h3>
+<div id="cell-65" class="cell" data-outputid="e93f284e-9279-4e21-cc6c-0db9e7ca2312" data-execution_count="44">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>plot_lagged_correlations(df_combined_inner, <span class="st">'average_CO2'</span>, <span class="dv">1825</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>plot_lagged_correlations(df_combined_inner, <span class="st">'average_CO2'</span>, <span class="dv">1825</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Preprocessing_Quarto_files/figure-html/cell-45-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="Preprocessing_Quarto_files/figure-html/cell-42-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -2226,17 +1801,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>📈 N₂O (<code>median_N2O</code>) Shows Long-Term Influence - it maintains a high correlation for several years.</p>
 <p>The yearly cycles suggest that seasonality must be considered in CO₂ forecasting models.</p>
 </section>
-<section id="year-back-analysis" class="level3" data-number="9.0.3">
-<h3 data-number="9.0.3" class="anchored" data-anchor-id="year-back-analysis"><span class="header-section-number">9.0.3</span> 10 year back analysis</h3>
-<div id="cell-72" class="cell" data-outputid="0dfd2831-2238-43cc-aeaa-eaccbdb4de78" data-execution_count="45">
+<section id="year-back-analysis" class="level3" data-number="8.0.3">
+<h3 data-number="8.0.3" class="anchored" data-anchor-id="year-back-analysis"><span class="header-section-number">8.0.3</span> 10 year back analysis</h3>
+<div id="cell-68" class="cell" data-outputid="0dfd2831-2238-43cc-aeaa-eaccbdb4de78" data-execution_count="45">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>plot_lagged_correlations(df_combined_inner, <span class="st">'average_CO2'</span>, <span class="dv">3650</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>plot_lagged_correlations(df_combined_inner, <span class="st">'average_CO2'</span>, <span class="dv">3650</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Preprocessing_Quarto_files/figure-html/cell-46-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="Preprocessing_Quarto_files/figure-html/cell-43-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -2259,20 +1834,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>📉 After ~8-10 Years, Correlations Become More Unstable</p>
 <p>Around 2500-3500 days (7-10 years), the correlations become noisier. This could be due to external climate variability, policy changes, or model limitations in capturing such long-term effects.</p>
 <p>🌍 Implications for Long-Term CO₂ Forecasting - Annual cycles are clearly visible, meaning that any CO₂ forecasting model should incorporate seasonality. - Humidity has a delayed inverse effect, possibly due to its influence on carbon sinks. - Industrial pollutants show shorter-term influence, making them more useful for mid-term (1-5 year) forecasting.</p>
-<div id="cell-74" class="cell" data-execution_count="46">
+<div id="cell-70" class="cell" data-execution_count="46">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>df_combined_inner.drop(columns <span class="op">=</span> [<span class="st">'precipitation'</span>, <span class="st">'wind_speed'</span>, <span class="st">'dew_point'</span>, <span class="st">'pressure'</span>])</span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>df_combined_outer.drop(columns <span class="op">=</span> [<span class="st">'precipitation'</span>, <span class="st">'wind_speed'</span>, <span class="st">'dew_point'</span>, <span class="st">'pressure'</span>])</span>
-<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>df_full_CO2 <span class="op">=</span> df_combined_outer[[<span class="st">'average_CO2'</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>df_combined_inner.drop(columns <span class="op">=</span> [<span class="st">'precipitation'</span>, <span class="st">'wind_speed'</span>, <span class="st">'dew_point'</span>, <span class="st">'pressure'</span>])</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>df_combined_outer.drop(columns <span class="op">=</span> [<span class="st">'precipitation'</span>, <span class="st">'wind_speed'</span>, <span class="st">'dew_point'</span>, <span class="st">'pressure'</span>])</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>df_full_CO2 <span class="op">=</span> df_combined_outer[[<span class="st">'average_CO2'</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-75" class="cell" data-execution_count="47">
+<div id="cell-71" class="cell" data-execution_count="47">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>df_combined_inner.to_csv(<span class="st">'df_combined_inner.csv'</span>, index<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>df_combined_outer.to_csv(<span class="st">'df_combined_outer.csv'</span>, index<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>df_full_CO2.to_csv(<span class="st">'df_full_CO2.csv'</span>, index<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>df_combined_inner.to_csv(<span class="st">'df_combined_inner.csv'</span>, index<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>df_combined_outer.to_csv(<span class="st">'df_combined_outer.csv'</span>, index<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>df_full_CO2.to_csv(<span class="st">'df_full_CO2.csv'</span>, index<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>

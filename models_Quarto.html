@@ -9,7 +9,7 @@
 <meta name="author" content="Ekaterina Cvetkova">
 <meta name="dcterms.date" content="2025-01-27">
 
-<title>Forecasting Models</title>
+<title>Forecasting models</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -83,19 +83,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
+  <ul>
+  <li><a href="#data-and-library-importation" id="toc-data-and-library-importation" class="nav-link active" data-scroll-target="#data-and-library-importation"><span class="header-section-number">1</span> Data and Library importation</a></li>
+  <li><a href="#initial-visualisations" id="toc-initial-visualisations" class="nav-link" data-scroll-target="#initial-visualisations"><span class="header-section-number">2</span> Initial visualisations</a></li>
+  <li><a href="#long-term-model---10-years-ahead---co2-original-data" id="toc-long-term-model---10-years-ahead---co2-original-data" class="nav-link" data-scroll-target="#long-term-model---10-years-ahead---co2-original-data"><span class="header-section-number">3</span> Long term Model - 10 years ahead - CO2 original data</a>
   <ul class="collapse">
-  <li><a href="#models" id="toc-models" class="nav-link active" data-scroll-target="#models"><span class="header-section-number">1</span> <strong>Models</strong></a></li>
-  <li><a href="#data-and-library-importation" id="toc-data-and-library-importation" class="nav-link" data-scroll-target="#data-and-library-importation"><span class="header-section-number">2</span> Data and Library importation</a></li>
-  <li><a href="#initial-visualisations" id="toc-initial-visualisations" class="nav-link" data-scroll-target="#initial-visualisations"><span class="header-section-number">3</span> Initial visualisations</a></li>
-  <li><a href="#long-term-model---10-years-ahead---co2-original-data" id="toc-long-term-model---10-years-ahead---co2-original-data" class="nav-link" data-scroll-target="#long-term-model---10-years-ahead---co2-original-data"><span class="header-section-number">4</span> 1. Long term Model - 10 years ahead - CO2 original data</a></li>
-  <li><a href="#gaussian-processes" id="toc-gaussian-processes" class="nav-link" data-scroll-target="#gaussian-processes"><span class="header-section-number">5</span> <strong>Gaussian Processes</strong></a></li>
-  <li><a href="#short-medium-model---predictions-1-month-ahead" id="toc-short-medium-model---predictions-1-month-ahead" class="nav-link" data-scroll-target="#short-medium-model---predictions-1-month-ahead"><span class="header-section-number">6</span> 2. Short-Medium Model - predictions 1 month ahead</a></li>
-  <li><a href="#sarimax" id="toc-sarimax" class="nav-link" data-scroll-target="#sarimax"><span class="header-section-number">7</span> <strong>SarimaX</strong></a></li>
-  <li><a href="#medium-long-term-model---predictions-5-years-ahead" id="toc-medium-long-term-model---predictions-5-years-ahead" class="nav-link" data-scroll-target="#medium-long-term-model---predictions-5-years-ahead"><span class="header-section-number">8</span> 3. Medium-Long term Model - predictions 5 years ahead</a></li>
-  <li><a href="#prophet" id="toc-prophet" class="nav-link" data-scroll-target="#prophet"><span class="header-section-number">9</span> <strong>Prophet</strong></a></li>
-  <li><a href="#long-term-model---predictions-20-years-ahead" id="toc-long-term-model---predictions-20-years-ahead" class="nav-link" data-scroll-target="#long-term-model---predictions-20-years-ahead"><span class="header-section-number">10</span> 4. Long term Model - predictions 20+ years ahead</a></li>
-  <li><a href="#gaussian-processes-1" id="toc-gaussian-processes-1" class="nav-link" data-scroll-target="#gaussian-processes-1"><span class="header-section-number">11</span> <strong>Gaussian Processes</strong></a></li>
-  <li><a href="#visualisations-of-feature-importance" id="toc-visualisations-of-feature-importance" class="nav-link" data-scroll-target="#visualisations-of-feature-importance"><span class="header-section-number">12</span> Visualisations of Feature Importance</a></li>
+  <li><a href="#gaussian-processes" id="toc-gaussian-processes" class="nav-link" data-scroll-target="#gaussian-processes"><span class="header-section-number">3.1</span> <strong>Gaussian Processes</strong></a></li>
+  </ul></li>
+  <li><a href="#short-medium-model---predictions-1-month-ahead" id="toc-short-medium-model---predictions-1-month-ahead" class="nav-link" data-scroll-target="#short-medium-model---predictions-1-month-ahead"><span class="header-section-number">4</span> Short-Medium Model - predictions 1 month ahead</a>
+  <ul class="collapse">
+  <li><a href="#sarimax" id="toc-sarimax" class="nav-link" data-scroll-target="#sarimax"><span class="header-section-number">4.1</span> <strong>SarimaX</strong></a></li>
+  </ul></li>
+  <li><a href="#medium-long-term-model---predictions-5-years-ahead" id="toc-medium-long-term-model---predictions-5-years-ahead" class="nav-link" data-scroll-target="#medium-long-term-model---predictions-5-years-ahead"><span class="header-section-number">5</span> Medium-Long term Model - predictions 5 years ahead</a>
+  <ul class="collapse">
+  <li><a href="#prophet" id="toc-prophet" class="nav-link" data-scroll-target="#prophet"><span class="header-section-number">5.1</span> <strong>Prophet</strong></a></li>
+  </ul></li>
+  <li><a href="#long-term-model---predictions-20-years-ahead" id="toc-long-term-model---predictions-20-years-ahead" class="nav-link" data-scroll-target="#long-term-model---predictions-20-years-ahead"><span class="header-section-number">6</span> Long term Model - predictions 20+ years ahead</a>
+  <ul class="collapse">
+  <li><a href="#gaussian-processes-1" id="toc-gaussian-processes-1" class="nav-link" data-scroll-target="#gaussian-processes-1"><span class="header-section-number">6.1</span> <strong>Gaussian Processes</strong></a></li>
+  </ul></li>
+  <li><a href="#visualisations-of-feature-importance" id="toc-visualisations-of-feature-importance" class="nav-link" data-scroll-target="#visualisations-of-feature-importance"><span class="header-section-number">7</span> Visualisations of Feature Importance</a></li>
   </ul>
 </nav>
 </div>
@@ -103,7 +110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Forecasting Models</h1>
+<h1 class="title">Forecasting models</h1>
 </div>
 
 
@@ -120,7 +127,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2025-01-27</p>
+      <p class="date">January 27, 2025</p>
     </div>
   </div>
   
@@ -132,12 +139,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="models" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> <strong>Models</strong></h1>
-</section>
-<section id="data-and-library-importation" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Data and Library importation</h1>
-<div id="cell-3" class="cell" data-execution_count="1">
+<section id="data-and-library-importation" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Data and Library importation</h1>
+<div id="cell-2" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -166,14 +170,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   from .autonotebook import tqdm as notebook_tqdm</code></pre>
 </div>
 </div>
-<div id="cell-4" class="cell" data-execution_count="2">
+<div id="cell-3" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df_combined_inner <span class="op">=</span> pd.read_csv(<span class="vs">r'df_combined_inner.csv'</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>df_full_CO2 <span class="op">=</span> pd.read_csv(<span class="vs">r'df_full_CO2.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-5" class="cell" data-execution_count="3">
+<div id="cell-4" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df_combined_inner[<span class="st">"datetime"</span>] <span class="op">=</span> pd.to_datetime(df_combined_inner[<span class="st">"datetime"</span>]).dt.date</span>
@@ -186,9 +190,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 </div>
 </section>
-<section id="initial-visualisations" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Initial visualisations</h1>
-<div id="cell-7" class="cell" data-execution_count="4">
+<section id="initial-visualisations" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Initial visualisations</h1>
+<div id="cell-6" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>plot_column(df_full_CO2, <span class="st">'average_CO2'</span>, <span class="st">'red'</span>)</span>
@@ -210,12 +214,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="long-term-model---10-years-ahead---co2-original-data" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> 1. Long term Model - 10 years ahead - CO2 original data</h1>
-</section>
-<section id="gaussian-processes" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> <strong>Gaussian Processes</strong></h1>
-<div id="cell-9" class="cell" data-execution_count="5">
+<section id="long-term-model---10-years-ahead---co2-original-data" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Long term Model - 10 years ahead - CO2 original data</h1>
+<section id="gaussian-processes" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="gaussian-processes"><span class="header-section-number">3.1</span> <strong>Gaussian Processes</strong></h2>
+<div id="cell-8" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1 - resample and structure data</span></span>
@@ -226,7 +229,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>df_CO2_monthly <span class="op">=</span> df_CO2_monthly.reset_index()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-10" class="cell" data-execution_count="6">
+<div id="cell-9" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2. Transform datetime into a numeric representation (year + fractional month)</span></span>
@@ -238,7 +241,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-11" class="cell" data-execution_count="7">
+<div id="cell-10" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3. Create and combine all necessary kernels </span></span>
@@ -258,7 +261,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-12" class="cell">
+<div id="cell-11" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>co2_kernel <span class="op">=</span> (</span>
@@ -278,7 +281,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>Noise kernel</code>: Accounts for measurement uncertainties</li>
 </ul>
 <p>By adding these kernels, we create a comprehensive model that can capture complex patterns in CO2 measurements.</p>
-<div id="cell-14" class="cell" data-execution_count="9">
+<div id="cell-13" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 5. Train the model</span></span>
@@ -706,7 +709,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>GaussianProcessRegressor(kernel=50**2 * RBF(length_scale=50) + 2**2 * RBF(length_scale=100) * ExpSineSquared(length_scale=1, periodicity=1) + 0.5**2 * RationalQuadratic(alpha=1, length_scale=1) + 0.1**2 * RBF(length_scale=0.1) + WhiteKernel(noise_level=0.01))</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br>On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden=""><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked=""><label for="sk-estimator-id-1" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>GaussianProcessRegressor</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.6/modules/generated/sklearn.gaussian_process.GaussianProcessRegressor.html">?<span>Documentation for GaussianProcessRegressor</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted"><pre>GaussianProcessRegressor(kernel=50**2 * RBF(length_scale=50) + 2**2 * RBF(length_scale=100) * ExpSineSquared(length_scale=1, periodicity=1) + 0.5**2 * RationalQuadratic(alpha=1, length_scale=1) + 0.1**2 * RBF(length_scale=0.1) + WhiteKernel(noise_level=0.01))</pre></div> </div></div></div></div>
 </div>
 </div>
-<div id="cell-15" class="cell" data-execution_count="10">
+<div id="cell-14" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 6. Make predictions</span></span>
@@ -724,7 +727,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 <p>We create 1,000 prediction points spanning the next 10 years.</p>
 <p><code>predict()</code> returns both the predicted mean and the standard deviation. The standard deviation represents the model’s uncertainty at each point. We add back the mean to convert predictions to absolute CO2 levels for the next 10 years.</p>
-<div id="cell-17" class="cell" data-execution_count="11">
+<div id="cell-16" class="cell" data-execution_count="11">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">16</span>, <span class="dv">5</span>))</span>
@@ -757,12 +760,12 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 </div>
 </section>
-<section id="short-medium-model---predictions-1-month-ahead" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> 2. Short-Medium Model - predictions 1 month ahead</h1>
 </section>
-<section id="sarimax" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> <strong>SarimaX</strong></h1>
-<div id="cell-19" class="cell" data-execution_count="12">
+<section id="short-medium-model---predictions-1-month-ahead" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Short-Medium Model - predictions 1 month ahead</h1>
+<section id="sarimax" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="sarimax"><span class="header-section-number">4.1</span> <strong>SarimaX</strong></h2>
+<div id="cell-18" class="cell" data-execution_count="12">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load and prepare the dataset</span></span>
@@ -770,7 +773,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>co2_series <span class="op">=</span> data[<span class="st">'average_CO2'</span>] <span class="co"># for such a short timeframe we don't really need all the features</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-20" class="cell" data-execution_count="13">
+<div id="cell-19" class="cell" data-execution_count="13">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Preprocess the data</span></span>
@@ -786,7 +789,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <li>Stabilize the variance</li>
 <li>Make the time series more stationary (a key assumption for SARIMA models)</li>
 </ul>
-<div id="cell-22" class="cell" data-execution_count="14">
+<div id="cell-21" class="cell" data-execution_count="14">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: ACF and PACF for diagnostics</span></span>
@@ -810,7 +813,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <p><strong>PACF</strong> (Partial Autocorrelation Function): Shows direct correlation between observations at different time lags</p>
 <p>These plots help determine the appropriate parameters for the SARIMA model</p>
 <p>Significant spikes indicate potential autoregressive (p) and moving average (q) terms</p>
-<div id="cell-24" class="cell" data-execution_count="15">
+<div id="cell-23" class="cell" data-execution_count="15">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3: finding best SARIMA order using grid search</span></span>
@@ -851,7 +854,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <p>Grid search tests multiple parameter combinations AIC (Akaike Information Criterion) helps select the best model</p>
 <p>Balances model complexity with goodness of fit</p>
 <p>The <code>12</code> in seasonal parameters suggests annual seasonality</p>
-<div id="cell-26" class="cell" data-execution_count="16">
+<div id="cell-25" class="cell" data-execution_count="16">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 4: Train the SARIMA model</span></span>
@@ -862,7 +865,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>model_fit <span class="op">=</span> model.fit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-27" class="cell" data-execution_count="17">
+<div id="cell-26" class="cell" data-execution_count="17">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 5: Forecast next month's CO2 levels</span></span>
@@ -873,7 +876,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>conf_int <span class="op">=</span> forecast.conf_int()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-28" class="cell" data-execution_count="18">
+<div id="cell-27" class="cell" data-execution_count="18">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 6: Visualize the extended forecast</span></span>
@@ -881,14 +884,14 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>historical_range <span class="op">=</span> co2_series.index[<span class="op">-</span><span class="dv">5</span> <span class="op">*</span> <span class="dv">30</span>:]  <span class="co"># Approximately 5 months</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-29" class="cell" data-execution_count="19">
+<div id="cell-28" class="cell" data-execution_count="19">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Forecast dates</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>forecast_dates <span class="op">=</span> pd.date_range(start<span class="op">=</span>co2_series.index[<span class="op">-</span><span class="dv">1</span>], periods<span class="op">=</span>steps <span class="op">+</span> <span class="dv">1</span>)[<span class="dv">1</span>:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-30" class="cell" data-execution_count="20">
+<div id="cell-29" class="cell" data-execution_count="20">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot</span></span>
@@ -927,7 +930,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 </div>
 </div>
-<div id="cell-31" class="cell" data-execution_count="21">
+<div id="cell-30" class="cell" data-execution_count="21">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>plot_column(df_full_CO2, <span class="st">'average_CO2'</span>, <span class="st">'blue'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -941,12 +944,12 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 </div>
 </section>
-<section id="medium-long-term-model---predictions-5-years-ahead" class="level1" data-number="8">
-<h1 data-number="8"><span class="header-section-number">8</span> 3. Medium-Long term Model - predictions 5 years ahead</h1>
 </section>
-<section id="prophet" class="level1" data-number="9">
-<h1 data-number="9"><span class="header-section-number">9</span> <strong>Prophet</strong></h1>
-<div id="cell-33" class="cell" data-execution_count="22">
+<section id="medium-long-term-model---predictions-5-years-ahead" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Medium-Long term Model - predictions 5 years ahead</h1>
+<section id="prophet" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="prophet"><span class="header-section-number">5.1</span> <strong>Prophet</strong></h2>
+<div id="cell-32" class="cell" data-execution_count="22">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1. Prepare data</span></span>
@@ -957,7 +960,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>prophet_df.dropna(inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-34" class="cell" data-execution_count="23">
+<div id="cell-33" class="cell" data-execution_count="23">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2. Add other columns as regressors</span></span>
@@ -969,7 +972,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </details>
 </div>
 <p>External regressors allow the model to incorporate additional contextual information. These can improve forecast accuracy by capturing broader environmental behaviours.</p>
-<div id="cell-36" class="cell" data-execution_count="24">
+<div id="cell-35" class="cell" data-execution_count="24">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3. Initialize Prophet Model</span></span>
@@ -996,7 +999,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <p>Useful for environmental data where seasonal impacts scale with baseline levels</p>
 <p><code>interval_width</code>: Creates 95% confidence intervals</p>
 <p>External regressors help the model understand how other factors might influence CO2 levels</p>
-<div id="cell-38" class="cell" data-execution_count="25">
+<div id="cell-37" class="cell" data-execution_count="25">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 4. Train Prophet model</span></span>
@@ -1011,7 +1014,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <pre><code>&lt;prophet.forecaster.Prophet at 0x20f4170d690&gt;</code></pre>
 </div>
 </div>
-<div id="cell-39" class="cell" data-execution_count="26">
+<div id="cell-38" class="cell" data-execution_count="26">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 5. Generate Future Forecast (5 years = ~1825 days)</span></span>
@@ -1019,7 +1022,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>future <span class="op">=</span> model.make_future_dataframe(periods<span class="op">=</span><span class="dv">5</span><span class="op">*</span><span class="dv">365</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-40" class="cell" data-execution_count="27">
+<div id="cell-39" class="cell" data-execution_count="27">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extend regressors into the future</span></span>
@@ -1030,7 +1033,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 <p>We generate a dataframe with forecasts for the next 5 years (1,825 days).</p>
 <p><code>model.predict()</code> generates: - Point forecasts (yhat) - Upper and lower confidence intervals</p>
-<div id="cell-42" class="cell" data-execution_count="28">
+<div id="cell-41" class="cell" data-execution_count="28">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 5. Visualize the Forecast</span></span>
@@ -1054,7 +1057,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 </div>
 </div>
-<div id="cell-43" class="cell" data-execution_count="29">
+<div id="cell-42" class="cell" data-execution_count="29">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Analyze Forecast Summary</span></span>
@@ -1076,12 +1079,12 @@ Difference between first and last predicted value: 61.80267685175386</code></pre
 </div>
 </div>
 </section>
-<section id="long-term-model---predictions-20-years-ahead" class="level1" data-number="10">
-<h1 data-number="10"><span class="header-section-number">10</span> 4. Long term Model - predictions 20+ years ahead</h1>
 </section>
-<section id="gaussian-processes-1" class="level1" data-number="11">
-<h1 data-number="11"><span class="header-section-number">11</span> <strong>Gaussian Processes</strong></h1>
-<div id="cell-45" class="cell" data-execution_count="30">
+<section id="long-term-model---predictions-20-years-ahead" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Long term Model - predictions 20+ years ahead</h1>
+<section id="gaussian-processes-1" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="gaussian-processes-1"><span class="header-section-number">6.1</span> <strong>Gaussian Processes</strong></h2>
+<div id="cell-44" class="cell" data-execution_count="30">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load dataset</span></span>
@@ -1090,7 +1093,7 @@ Difference between first and last predicted value: 61.80267685175386</code></pre
 <span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>df.set_index(<span class="st">'datetime'</span>, inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-46" class="cell" data-execution_count="31">
+<div id="cell-45" class="cell" data-execution_count="31">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1. Resample and prepare data</span></span>
@@ -1100,7 +1103,7 @@ Difference between first and last predicted value: 61.80267685175386</code></pre
 <span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>df_monthly.reset_index(inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-47" class="cell" data-execution_count="32">
+<div id="cell-46" class="cell" data-execution_count="32">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2. Prepare features and target</span></span>
@@ -1109,7 +1112,7 @@ Difference between first and last predicted value: 61.80267685175386</code></pre
 <span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> df_monthly[<span class="st">'average_CO2'</span>].to_numpy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-48" class="cell" data-execution_count="33">
+<div id="cell-47" class="cell" data-execution_count="33">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3. Standardize target</span></span>
@@ -1119,7 +1122,7 @@ Difference between first and last predicted value: 61.80267685175386</code></pre
 <span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>y_normalized <span class="op">=</span> (y <span class="op">-</span> y_mean) <span class="op">/</span> y_std</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-49" class="cell" data-execution_count="34">
+<div id="cell-48" class="cell" data-execution_count="34">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 4. Kernel creation and selection</span></span>
@@ -1162,7 +1165,7 @@ Difference between first and last predicted value: 61.80267685175386</code></pre
 <li>Accounts for measurement uncertainties</li>
 <li>Helps distinguish between signal and noise</li>
 </ul>
-<div id="cell-51" class="cell" data-execution_count="35">
+<div id="cell-50" class="cell" data-execution_count="35">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 5. Fit Gaussian Process Regressor</span></span>
@@ -1589,7 +1592,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </style><div id="sk-container-id-2" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>GaussianProcessRegressor(kernel=50**2 * RBF(length_scale=50) + 2**2 * RBF(length_scale=100) * ExpSineSquared(length_scale=1, periodicity=1) + 0.5**2 * RationalQuadratic(alpha=1, length_scale=1) + 0.1**2 * RBF(length_scale=0.1) + WhiteKernel(noise_level=0.01))</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br>On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden=""><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-2" type="checkbox" checked=""><label for="sk-estimator-id-2" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>GaussianProcessRegressor</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.6/modules/generated/sklearn.gaussian_process.GaussianProcessRegressor.html">?<span>Documentation for GaussianProcessRegressor</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted"><pre>GaussianProcessRegressor(kernel=50**2 * RBF(length_scale=50) + 2**2 * RBF(length_scale=100) * ExpSineSquared(length_scale=1, periodicity=1) + 0.5**2 * RationalQuadratic(alpha=1, length_scale=1) + 0.1**2 * RBF(length_scale=0.1) + WhiteKernel(noise_level=0.01))</pre></div> </div></div></div></div>
 </div>
 </div>
-<div id="cell-52" class="cell" data-execution_count="36">
+<div id="cell-51" class="cell" data-execution_count="36">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 6. Make predictions</span></span>
@@ -1603,7 +1606,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a>std_pred <span class="op">*=</span> y_std</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-53" class="cell" data-execution_count="37">
+<div id="cell-52" class="cell" data-execution_count="37">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 7. Plot forecast</span></span>
@@ -1632,9 +1635,10 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 </div>
 </section>
-<section id="visualisations-of-feature-importance" class="level1" data-number="12">
-<h1 data-number="12"><span class="header-section-number">12</span> Visualisations of Feature Importance</h1>
-<div id="cell-55" class="cell" data-execution_count="38">
+</section>
+<section id="visualisations-of-feature-importance" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Visualisations of Feature Importance</h1>
+<div id="cell-54" class="cell" data-execution_count="38">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a></span>
