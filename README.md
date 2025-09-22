@@ -1,6 +1,6 @@
-# CO2_project
+# CO2 
 
-### Data is received in the form of an excel file 
+### Original CO2 data is received in the form of an excel file 
 https://docs.google.com/spreadsheets/d/1e3UHTczADp20aTlmeOdv1TCw_J5Vt0FnRzHBGLIg4Iw/edit?gid=487576916#gid=487576916
 
 ### Data preprocessing needed 
@@ -9,7 +9,7 @@ https://docs.google.com/spreadsheets/d/1e3UHTczADp20aTlmeOdv1TCw_J5Vt0FnRzHBGLIg
 - data cleaning - invalid dates/nan values/missing values
 - initial analysis and plots
 
-### Sources for additional data - https://gml.noaa.gov/ccgg/trends/graph.html
+### Sources for additional data on greenhouses gasses- https://gml.noaa.gov/ccgg/trends/graph.html
 All data is in situ samples from Mauna Loa and/or the suitable coordinates
 
 - Sulfur hexafluoride (SF6) data from hourly in situ samples analyzed on a gas chromatograph located at Mauna Loa (MLO), Hawaii (19.539 N, 155.578 W, elevation: 3397m) https://gml.noaa.gov/aftp/data/hats/sf6/insituGCs/CATS/daily/mlo_SF6_Day.dat
@@ -18,6 +18,7 @@ All data is in situ samples from Mauna Loa and/or the suitable coordinates
 
 - Nitrous Oxide (N2O) data from hourly in situ samples analyzed on a gas chromatograph located at Mauna Loa (MLO), Hawaii (19.539 N, 155.578 W, elevation: 3397 m) https://gml.noaa.gov/aftp/data/hats/n2o/insituGCs/CATS/daily/mlo_N2O_Day.dat
 
+### Sources for additional meteolrological data- https://open-meteo.com/
 - Historical meteorological variables (temperature, humidity, wind speed, pressure) https://open-meteo.com/en/docs/historical-weather-api
 
 ### Data preparations for models 
