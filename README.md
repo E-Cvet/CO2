@@ -1,7 +1,7 @@
 # CO2 
 
 ### Original CO2 data is received in the form of an excel file 
-https://docs.google.com/spreadsheets/d/1e3UHTczADp20aTlmeOdv1TCw_J5Vt0FnRzHBGLIg4Iw/edit?gid=487576916#gid=487576916
+https://docs.google.com/spreadsheets/d/e/2PACX-1vRMtbplOBY9EF3RX_HHYX9PHgSrbhf7xGZT_xH53bs7oJg9Qera32JTv23t4Uc6um1VdUONwLIEsqAs/pub?output=xlsx
 
 ### Data preprocessing needed 
 - sorting and creating proper datetime indexes based on available data
@@ -21,12 +21,12 @@ All data is in situ samples from Mauna Loa and/or the suitable coordinates
 ### Sources for additional meteolrological data- https://open-meteo.com/
 - Historical meteorological variables (temperature, humidity, wind speed, pressure) https://open-meteo.com/en/docs/historical-weather-api
 
-### Data preparations for models 
+### [Data preparations for models](https://co2-ml-forecast.netlify.app/preprocessing) 
 - merging based on datetime 
 - current, lagged and rolling correlation analysis and tests (Kendall, Pearson, Granger..)
 - stationarity, ACF and PACF tests
 
-## Models
+## [Models](https://co2-ml-forecast.netlify.app/models)
 ### Model 1 - Only original data is used - predicting 10 years ahead - Gaussian Processes 
 ### Model 2 - Short-Medium term model - predicting 1 month ahead - SarimaX
 ### Model 3 - Medium-Long term model - predicting up to 5 years ahead (multiple features) - Prophet
